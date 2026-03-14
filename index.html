@@ -227,13 +227,86 @@
       .phone { border-radius: 30px; padding: 8px; }
       .phone-screen { border-radius: 22px; }
     }
+
+    /* Hamburger button */
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 22px;
+      height: 2px;
+      background: white;
+      display: block;
+    }
+
+    /* Mobile layout */
+
+    @media (max-width: 900px) {
+
+      .hamburger {
+        display: flex;
+      }
+
+      .nav {
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: rgba(10,15,30,0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        padding: 14px;
+        flex-direction: column;
+        gap: 10px;
+
+        display: none;
+      }
+
+      .nav.open {
+        display: flex;
+      }
+
+    }    
   </style>
 </head>
+
+<script>
+const hamburger = document.getElementById("hamburger");
+const nav = document.getElementById("nav");
+
+hamburger.addEventListener("click", () => {
+  nav.classList.toggle("open");
+});
+
+document.querySelectorAll(".nav a").forEach(link => {
+  link.addEventListener("click", () => {
+    nav.classList.remove("open");
+  });
+});
+
+</script>
+
 <body>
   <header class="topbar">
     <div class="wrap topbar-inner">
-      <a class="brand" href="#top"><span class="brand-dot"></span> zpunk <small>pocket groovebox</small></a>
-      <nav class="nav">
+
+      <a class="brand" href="#top">
+        <span class="brand-dot"></span> zpunk <small>pocket groovebox</small>
+      </a>
+
+      <button class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav" id="nav">
         <a href="#main">Main</a>
         <a href="#keys">Keys</a>
         <a href="#synth">Synth</a>
@@ -241,6 +314,7 @@
         <a href="#sampler">Sampler</a>
         <a href="#chain">Chain</a>
       </nav>
+
     </div>
   </header>
 
