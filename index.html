@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>zpunk — pocket groovebox</title>
+  <meta name="description" content="zpunk is a mobile groovebox for drums, chops, synth lines, chords, and chain-based arrangement." />
+  <style>
+    :root {
+      --bg: #060912;
+      --bg2: #0a1020;
+      --panel: rgba(15, 22, 40, 0.78);
+      --panel-strong: rgba(14, 20, 36, 0.96);
+      --line: rgba(154, 177, 255, 0.12);
+      --text: #f3f6ff;
+      --muted: #9ca8c6;
+      --soft: #7f89a6;
+      --accent: #7fe1ff;
+      --accent2: #8f8bff;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+      --radius: 28px;
+      --max: 1220px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(127,225,255,.12), transparent 28%),
+        radial-gradient(circle at 84% 12%, rgba(143,139,255,.16), transparent 24%),
+        linear-gradient(180deg, #0a0e18 0%, #060912 48%, #04070e 100%);
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.024) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.024) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,.8), transparent 85%);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(var(--max), calc(100% - 28px)); margin: 0 auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(6, 9, 18, 0.68);
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+    .topbar-inner {
+      display: flex; justify-content: space-between; align-items: center; gap: 18px;
+      min-height: 74px;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 1rem; font-weight: 700;
+      letter-spacing: -0.04em;
+    }
+    .brand-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 24px rgba(127,225,255,.3);
+      flex: 0 0 auto;
+    }
+    .brand small { color: var(--muted); font-weight: 500; margin-left: 8px; }
+    .nav { display: flex; flex-wrap: wrap; gap: 8px; }
+    .nav a {
+      color: var(--muted);
+      padding: 10px 14px; border-radius: 999px;
+      font-size: .92rem;
+      border: 1px solid transparent;
+    }
+    .nav a:hover {
+      color: var(--text);
+      border-color: rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+    }
+
+    .hero { padding: 72px 0 44px; }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.05fr .95fr; gap: 42px; align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 9px 14px; border-radius: 999px;
+      background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06);
+      color: var(--muted); font-size: .86rem;
+      text-transform: uppercase; letter-spacing: .08em;
+    }
+    h1, h2, h3 { margin: 0; letter-spacing: -0.06em; }
+    h1 {
+      margin-top: 18px;
+      font-size: clamp(3.1rem, 8vw, 6.8rem);
+      line-height: .92;
+      max-width: 9ch;
+    }
+    .lede {
+      margin-top: 18px; max-width: 62ch;
+      color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.16rem);
+    }
+    .cta { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      padding: 14px 18px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      font-weight: 600; font-size: .96rem;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
+    }
+    .btn.primary {
+      background: linear-gradient(180deg, rgba(127,225,255,.18), rgba(127,225,255,.09));
+      border-color: rgba(127,225,255,.24);
+    }
+    .micro {
+      margin-top: 16px; color: var(--soft); font-size: .92rem;
+      max-width: 60ch;
+    }
+
+    .phone {
+      position: relative;
+      max-width: 470px; margin-left: auto;
+      border-radius: 34px; padding: 10px;
+      background: linear-gradient(180deg, rgba(38,47,79,.86), rgba(7,10,18,.96));
+      box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,.09);
+    }
+    .phone::before {
+      content: "";
+      position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+      width: 34%; height: 24px; border-radius: 0 0 18px 18px;
+      background: rgba(0,0,0,.46); z-index: 2;
+    }
+    .phone-screen {
+      overflow: hidden; border-radius: 26px; background: #02050c;
+      border: 1px solid rgba(255,255,255,.05);
+    }
+
+    section { padding: 26px 0; }
+    .section-head { margin-bottom: 18px; }
+    .kicker {
+      color: var(--accent); font-size: .82rem; letter-spacing: .16em; text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .section-head h2 { font-size: clamp(2rem, 4.5vw, 3.8rem); }
+    .section-head p {
+      margin-top: 12px; max-width: 65ch; color: var(--muted); font-size: 1.02rem;
+    }
+    .feature {
+      display: grid; grid-template-columns: minmax(300px, 470px) 1fr; gap: 28px; align-items: center;
+      margin: 22px 0 10px;
+    }
+    .feature.reverse { grid-template-columns: 1fr minmax(300px, 470px); }
+    .feature.reverse .copy { order: 1; }
+    .feature.reverse .phone { order: 2; margin-left: 0; }
+    .panel {
+      background: var(--panel); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow);
+    }
+    .copy h3 { font-size: clamp(1.5rem, 2.2vw, 2rem); }
+    .copy p { margin: 12px 0 0; color: var(--muted); font-size: 1rem; }
+    .grid2 {
+      display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; margin-top: 18px;
+    }
+    .bullet {
+      padding: 15px 16px; border-radius: 20px; background: var(--panel-strong);
+      border: 1px solid rgba(255,255,255,.05);
+    }
+    .bullet strong { display: block; font-size: .98rem; }
+    .bullet span { display: block; margin-top: 4px; color: var(--soft); font-size: .9rem; }
+
+    .timeline {
+      display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; margin-top: 18px;
+    }
+    .tile {
+      padding: 18px; border-radius: 22px; background: var(--panel); border: 1px solid var(--line);
+    }
+    .tile em {
+      display: inline-block; padding: 7px 10px; border-radius: 999px; background: rgba(255,255,255,.04);
+      color: var(--soft); font-style: normal; font-size: .8rem; margin-bottom: 12px;
+    }
+    .tile h3 { font-size: 1.1rem; line-height: 1; }
+    .tile p { color: var(--muted); font-size: .94rem; margin: 10px 0 0; }
+
+    .manual {
+      display: grid; grid-template-columns: .92fr 1.08fr; gap: 26px; align-items: center;
+      margin-top: 26px;
+    }
+    .sheet {
+      border-radius: 26px; overflow: hidden; background: #11161f;
+      border: 1px solid rgba(255,255,255,.06); box-shadow: var(--shadow);
+    }
+
+    .footer { padding: 48px 0 78px; }
+    .footer-card {
+      display: grid; grid-template-columns: 1.1fr .9fr; gap: 26px; align-items: center;
+      padding: 30px;
+      background: var(--panel); border: 1px solid var(--line); border-radius: 30px; box-shadow: var(--shadow);
+    }
+    .footer-card h2 { font-size: clamp(2rem, 4vw, 3.4rem); }
+    .footer-card p { color: var(--muted); max-width: 58ch; }
+    .stats { display: flex; gap: 12px; flex-wrap: wrap; }
+    .stat {
+      min-width: 132px; padding: 16px; border-radius: 20px;
+      background: var(--panel-strong); border: 1px solid rgba(255,255,255,.05);
+    }
+    .stat strong { display: block; font-size: 1.2rem; }
+    .stat span { color: var(--soft); font-size: .88rem; }
+    .tiny { margin-top: 18px; color: var(--soft); font-size: .88rem; }
+
+    @media (max-width: 1000px) {
+      .hero-grid, .feature, .feature.reverse, .manual, .footer-card { grid-template-columns: 1fr; }
+      .feature.reverse .copy, .feature.reverse .phone { order: initial; }
+      .phone { margin: 0 auto; }
+      .timeline { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+    @media (max-width: 720px) {
+      .topbar-inner { min-height: 66px; }
+      .nav { display: none; }
+      .hero { padding-top: 40px; }
+      .grid2, .timeline { grid-template-columns: 1fr; }
+      .panel, .footer-card { padding: 20px; border-radius: 24px; }
+      .phone { border-radius: 30px; padding: 8px; }
+      .phone-screen { border-radius: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top"><span class="brand-dot"></span> zpunk <small>pocket groovebox</small></a>
+      <nav class="nav">
+        <a href="#main">Main</a>
+        <a href="#keys">Keys</a>
+        <a href="#synth">Synth</a>
+        <a href="#chords">Chords</a>
+        <a href="#sampler">Sampler</a>
+        <a href="#chain">Chain</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">mobile-first · sequencing · samples · synth · arrangement</div>
+          <h1>Build full ideas on a single screen at a time.</h1>
+          <p class="lede">
+            zpunk is a focused groovebox for making drums, chopped samples, synth parts, chord progressions,
+            and full pattern chains without losing the sketch. Every tab is built around one clear task,
+            so you can move from beat to arrangement fast on a phone.
+          </p>
+          <div class="cta">
+            <a class="btn primary" href="#main">See the workflow</a>
+            <a class="btn" href="#updates">Read the latest updates</a>
+          </div>
+          <p class="micro">
+            Built around fast idea generation, better save recall, cleaner synth control,
+            and a more playable touch workflow.
+          </p>
+        </div>
+        <div class="phone">
+          <div class="phone-screen"><img src="images/main.jpeg" alt="zpunk main tab screenshot" /></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" id="updates">
+      <div class="section-head">
+        <div class="kicker">Latest direction</div>
+        <h2>Recent work is all about speed, recall, and flow.</h2>
+        <p>
+          The newest zpunk updates push the app toward faster beat generation, more expressive drums,
+          tighter sample shaping, and more reliable loading so ideas survive from sketch to saved project.
+        </p>
+      </div>
+      <div class="timeline">
+        <article class="tile">
+          <em>Random Beat Generator</em>
+          <h3>Get unstuck instantly</h3>
+          <p>
+            Long-press <strong>STOP</strong> on the main page to generate a new beat.
+            zpunk alternates between different groove styles like House and Boom Bap,
+            giving you a fast starting point you can immediately edit.
+          </p>
+        </article>
+
+        <article class="tile">
+          <em>Drum Velocity</em>
+          <h3>More human drums</h3>
+          <p>
+            Tap a placed drum step again to cycle its velocity between
+            <strong>low</strong>, <strong>mid</strong>, and <strong>high</strong>.
+            Use this for ghost snares, softer hats, stronger kicks, and more natural accents.
+          </p>
+        </article>
+
+        <article class="tile">
+          <em>Sampler Pitch</em>
+          <h3>Reshape a chop in place</h3>
+          <p>
+            Select a chop, then use the pitch control to push it up or down without leaving the sampler.
+            One source sample can become bass notes, leads, textures, or melodic variations.
+          </p>
+        </article>
+
+        <article class="tile">
+          <em>Safer Loading</em>
+          <h3>Projects restore cleanly</h3>
+          <p>
+            Project loading now stops playback before data is restored,
+            helping patterns, chains, synth settings, and sampler state come back in the correct order.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap" id="main">
+
+      <div class="section-head">
+        <div class="kicker">Main Tab</div>
+        <h2>The performance view.</h2>
+        <p>
+          The main tab is the fastest way to begin a track. Drums, sample triggers,
+          chop selection, mixer balance, transport, and tempo stay visible so you
+          can build the core groove without switching screens.
+        </p>
+      </div>
+
+      <div class="feature">
+
+        <div class="phone">
+          <div class="phone-screen">
+            <img src="images/main.jpeg" alt="zpunk main screen" />
+          </div>
+        </div>
+
+        <div class="panel copy">
+
+          <h3>Drums, chops, mixer, and tempo — all in one place.</h3>
+
+          <p class="intro">
+            Think of the main tab as the groove sketchpad. Tap in drums,
+            trigger sample chops, adjust levels, and evolve the loop while
+            it plays in real time.
+          </p>
+
+          <div class="grid2">
+
+            <div class="bullet">
+              <strong>Drum Sequencer</strong>
+              <span>
+                Select a sound from the Drum Picker — Kick, Snare, Clap, Hats, and more —
+                then tap steps in the sequencer to place hits into the pattern.
+              </span>
+            </div>
+
+            <div class="bullet">
+              <strong>Velocity Control</strong>
+              <span>
+                Hold a step and drag vertically to change its velocity. Each hit supports
+                three levels: low, mid, and high. The visible label, like K for Kick,
+                represents the mid velocity.
+              </span>
+            </div>
+
+            <div class="bullet">
+              <strong>Sample Sequencer</strong>
+              <span>
+                Choose a slice from the Chop Picker, then place it into the sample lane
+                to trigger chops rhythmically alongside the drums.
+              </span>
+            </div>
+
+            <div class="bullet">
+              <strong>Random Beat Generator</strong>
+              <span>
+                Long-press Stop to instantly generate a new groove. zpunk rotates between
+                styles such as house and boom-bap to create quick starting patterns.
+              </span>
+            </div>
+
+            <div class="bullet">
+              <strong>Transport & Tempo</strong>
+              <span>
+                Press Play to audition the loop while editing. The BPM control can be
+                adjusted during playback to explore different timing and groove.
+              </span>
+            </div>
+
+            <div class="bullet">
+              <strong>Fast Workflow</strong>
+              <span>
+                Drums, samples, mixer levels, and tempo stay visible on a single screen,
+                so ideas can be sketched quickly before moving to synth, chords, or arrangement.
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="wrap" id="keys">
+      <div class="feature reverse">
+        <div class="panel copy">
+          <h3>Keys tab for melodic sequencing.</h3>
+          <p>
+            The keys page is where single-note melodies, riffs, and bass patterns get sketched.
+            It pairs a note grid with fast patch browsing so the sound and the notes can evolve together.
+          </p>
+          <div class="grid2">
+            <div class="bullet">
+              <strong>Touch-first note grid</strong>
+              <span>Tap steps to place notes quickly, then drag where needed for held notes without cluttering the interface.</span>
+            </div>
+            <div class="bullet">
+              <strong>Patch browsing</strong>
+              <span>Use the patch controls to move through synth sounds while keeping the current sequence intact.</span>
+            </div>
+            <div class="bullet">
+              <strong>Accurate note lengths</strong>
+              <span>Adjacent sixteenths stay separate when entered individually, while dragged notes preserve longer held lengths.</span>
+            </div>
+            <div class="bullet">
+              <strong>Project recall</strong>
+              <span>Saved patterns restore more reliably, so melodic ideas come back the way they were written.</span>
+            </div>
+          </div>
+        </div>
+        <div class="phone"><div class="phone-screen"><img src="images/keys.jpeg" alt="zpunk keys tab screenshot" /></div></div>
+      </div>
+    </section>
+
+    <section class="wrap" id="synth">
+      <div class="feature">
+        <div class="phone"><div class="phone-screen"><img src="images/synth.jpeg" alt="zpunk synth panel screenshot" /></div></div>
+        <div class="panel copy">
+          <h3>A cleaner synth panel with more hardware feel.</h3>
+          <p>
+            The synth page is about direct sound design. Recent work tightened the layout,
+            removed redundant controls, and made patch shaping feel more deliberate on mobile.
+          </p>
+          <div class="grid2">
+            <div class="bullet">
+              <strong>OSC control</strong>
+              <span>Adjust volume, tune, wave, unison, detune, and harmonic shape directly from the panel.</span>
+            </div>
+            <div class="bullet">
+              <strong>ADSR by knobs + sliders</strong>
+              <span>Shape amp and modulation behavior more clearly, with a compact layout that stays readable on a phone.</span>
+            </div>
+            <div class="bullet">
+              <strong>Distortion module</strong>
+              <span>Use type, drive, and mix to add edge, weight, or saturation when a patch needs more bite.</span>
+            </div>
+            <div class="bullet">
+              <strong>Stable loaded state</strong>
+              <span>When projects load, visible synth values better reflect the current saved sound instead of snapping after interaction.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" id="chords">
+      <div class="feature reverse">
+        <div class="panel copy">
+          <h3>Chords tab for fast harmonic progressions.</h3>
+          <p>
+            Instead of entering one note at a time, the chords page lets each step trigger a full harmony.
+            It is designed to keep progression writing fast, visual, and playable.
+          </p>
+          <div class="grid2">
+            <div class="bullet">
+              <strong>Chord modes</strong>
+              <span>Choose between Major, Minor, 7th, and Sus2 to change the feel of the progression instantly.</span>
+            </div>
+            <div class="bullet">
+              <strong>Root picker</strong>
+              <span>Select a root from the pad grid, then place that harmony into the chord sequencer.</span>
+            </div>
+            <div class="bullet">
+              <strong>Step sequencing</strong>
+              <span>Tap the sequencer cells to build a progression that runs in sync with drums, keys, and samples.</span>
+            </div>
+            <div class="bullet">
+              <strong>Thumb-friendly layout</strong>
+              <span>Built for quick input on mobile without the density of a desktop piano-roll editor.</span>
+            </div>
+          </div>
+        </div>
+        <div class="phone"><div class="phone-screen"><img src="images/chords.jpeg" alt="zpunk chords tab screenshot" /></div></div>
+      </div>
+    </section>
+
+    <section class="wrap" id="sampler">
+      <div class="feature">
+        <div class="phone">
+          <div class="phone-screen">
+            <img src="images/sampler.jpeg" alt="zpunk sampler screenshot" />
+          </div>
+        </div>
+
+        <div class="panel copy">
+          <h3>Sampler tab for chop shaping and fast sample performance.</h3>
+          <p>
+            The sampler turns one audio source into a playable bank of slices.
+            You can quickly divide a sample, zoom into the waveform, adjust chop boundaries,
+            and sequence the pieces directly into your beat.
+          </p>
+
+          <div class="grid2">
+
+            <div class="bullet">
+              <strong>Load + Chop</strong>
+              <span>
+                Press <strong>Load</strong> to import a sample, then enable <strong>Chop Mode</strong> to divide
+                the audio into <strong>4, 8, or 16 slices</strong>. This creates a bank of playable chops.
+              </span>
+            </div>
+
+            <div class="bullet">
+              <strong>Touch waveform controls</strong>
+              <span>
+                Use <strong>two-finger drag</strong> to move across the waveform and
+                <strong>pinch to zoom</strong> for detailed editing when working with tight chops.
+              </span>
+            </div>
+
+            <div class="bullet">
+              <strong>Precise chop editing</strong>
+              <span>
+                Use the <strong>-0.10 / -0.01 / +0.01 / +0.10</strong> controls on screen
+                to trim or extend the selected chop boundary in small time increments.
+                This makes it easy to tighten drum hits or extend musical tails.
+              </span>
+            </div>
+
+            <div class="bullet">
+              <strong>Apply + Chop Picker</strong>
+              <span>
+                Press <strong>Apply</strong> to lock the slice layout, then select individual
+                chops from the <strong>Chop Picker grid</strong> and place them into the sample sequencer.
+              </span>
+            </div>
+
+            <div class="bullet">
+              <strong>Pitch per chop</strong>
+              <span>
+                Each chop can be pitched independently, letting one sample become
+                bass notes, melodies, textures, or rhythmic variations.
+              </span>
+            </div>
+
+            <div class="bullet">
+              <strong>Live preview</strong>
+              <span>
+                Tap chops to audition them instantly so you can quickly test slices
+                before placing them into the sequence.
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" id="chain">
+      <div class="feature reverse">
+        <div class="panel copy">
+          <h3>Chain tab for arrangement and live pattern editing.</h3>
+          <p>
+            Chain view turns short loops into structure. It is built for placing patterns across bars,
+            duplicating ideas forward, and continuing to edit while the arrangement plays.
+          </p>
+          <div class="grid2">
+            <div class="bullet">
+              <strong>Pattern workflow</strong>
+              <span>Use New, Save, and Dup to create or duplicate patterns, then Place them onto bars in the chain.</span>
+            </div>
+            <div class="bullet">
+              <strong>Dup + Next</strong>
+              <span>Quickly carry an idea forward into a new pattern slot so variations are easy to build section by section.</span>
+            </div>
+            <div class="bullet">
+              <strong>Live edits stick</strong>
+              <span>When the chain is running, edits now write into the active pattern more reliably instead of getting lost.</span>
+            </div>
+            <div class="bullet">
+              <strong>Arrangement flow</strong>
+              <span>Choose chain length, place patterns across bars, and expand a loop into a fuller structure without stopping the sketch.</span>
+            </div>
+          </div>
+        </div>
+        <div class="phone"><div class="phone-screen"><img src="images/chain.jpeg" alt="zpunk chain tab screenshot" /></div></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
