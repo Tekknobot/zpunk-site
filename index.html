@@ -53,20 +53,14 @@
     .hero .version-note { color: var(--soft); font-size: .84rem; margin-bottom: 0; }
     .link { display: inline-flex; align-items: center; gap: 8px; padding-bottom: 5px; margin: 13px 0 24px; color: var(--text); text-underline-offset: 6px; font-weight: 650; }
     .link:hover { color: var(--mint); }
-    .overview { border: 1px solid var(--line); background: var(--panel); border-radius: 12px; padding: 28px; }
-    .overview-top { display: flex; justify-content: space-between; color: var(--muted); font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 24px; }
-    .overview-top span:last-child { color: var(--mint); }
-    .track { display: grid; grid-template-columns: 78px minmax(0,1fr); gap: 15px; align-items: center; margin: 13px 0; }
-    .track-label { font-size: .7rem; font-weight: 800; letter-spacing: .08em; }
-    .track-lane { height: 26px; display: grid; grid-template-columns: repeat(8,minmax(0,1fr)); gap: 3px; }
-    .block { background: var(--tone); opacity: .92; border-radius: 3px; }
-    .block.dull { opacity: .18; }
-    .track:nth-of-type(2) { --tone: var(--drums); }
-    .track:nth-of-type(3) { --tone: var(--bass); }
-    .track:nth-of-type(4) { --tone: var(--synth); }
-    .track:nth-of-type(5) { --tone: var(--pads); }
-    .track:nth-of-type(6) { --tone: var(--chops); }
-    .overview-foot { margin-top: 24px; padding-top: 17px; border-top: 1px solid var(--line); color: var(--soft); font-size: .79rem; }
+    .overview { display:flex; justify-content:center; align-items:center; min-width:0; }
+    .phone-mock { width:min(100%, 360px); background: linear-gradient(180deg,#121c29 0%, #0d1624 100%); border: 1px solid #364657; border-radius: 36px; padding: 14px; box-shadow: 0 28px 80px rgba(0,0,0,.42), inset 0 0 0 1px rgba(255,255,255,.03); }
+    .phone-mock-inner { position: relative; border-radius: 26px; overflow: hidden; background:#000814; border: 1px solid rgba(255,255,255,.05); }
+    .phone-notch { position:absolute; top:10px; left:50%; transform:translateX(-50%); width:34%; height:18px; border-radius: 0 0 14px 14px; background:#080d16; z-index:2; box-shadow: 0 1px 0 rgba(255,255,255,.04); }
+    .phone-mock .shot { border:none; border-radius: 26px; background: transparent; }
+    .phone-mock .shot:hover { border:none; }
+    .phone-mock img { width:100%; height:auto; display:block; }
+    .phone-caption { text-align:center; color: var(--soft); font-size: .79rem; margin-top: 12px; }
     .quick { padding: 56px 0 34px; border-bottom: 1px solid var(--line); }
     .note { margin-top: 23px; padding: 16px 19px; border: 1px solid var(--line); border-left: 3px solid var(--mint); border-radius: 6px; background: var(--panel); font-size: .92rem; color: var(--muted); line-height: 1.65; }
     .note strong { color: var(--text); }
@@ -214,14 +208,16 @@
           <a class="link" href="#start">Get started <span aria-hidden="true">↗</span></a>
           <p class="version-note">Your guide to the ZPUNK 2.0 workflow.</p>
         </div>
-        <div class="overview" aria-label="Illustration of the five-track workflow">
-          <div class="overview-top"><span>Five-track workspace</span><span>2.0</span></div>
-          <div class="track"><span class="track-label" style="color:var(--drums)">DRUMS</span><div class="track-lane"><i class="block"></i><i class="block"></i><i class="block dull"></i><i class="block"></i><i class="block"></i><i class="block"></i><i class="block dull"></i><i class="block"></i></div></div>
-          <div class="track"><span class="track-label" style="color:var(--bass)">BASS</span><div class="track-lane"><i class="block"></i><i class="block"></i><i class="block"></i><i class="block"></i><i class="block dull"></i><i class="block"></i><i class="block"></i><i class="block"></i></div></div>
-          <div class="track"><span class="track-label" style="color:var(--synth)">SYNTH</span><div class="track-lane"><i class="block dull"></i><i class="block"></i><i class="block"></i><i class="block"></i><i class="block dull"></i><i class="block"></i><i class="block"></i><i class="block"></i></div></div>
-          <div class="track"><span class="track-label" style="color:var(--pads)">PADS</span><div class="track-lane"><i class="block"></i><i class="block"></i><i class="block"></i><i class="block"></i><i class="block"></i><i class="block"></i><i class="block"></i><i class="block"></i></div></div>
-          <div class="track"><span class="track-label" style="color:var(--chops)">CHOPS</span><div class="track-lane"><i class="block dull"></i><i class="block dull"></i><i class="block"></i><i class="block"></i><i class="block dull"></i><i class="block"></i><i class="block"></i><i class="block"></i></div></div>
-          <div class="overview-foot">Arrange → Create → Sound → Mix → Export</div>
+        <div class="overview" aria-label="ZPUNK arrange view shown in a phone frame">
+          <figure class="phone-mock">
+            <div class="phone-mock-inner">
+              <div class="phone-notch" aria-hidden="true"></div>
+              <a class="shot" href="images/arrange.jpg" target="_blank" rel="noopener" aria-label="View Arrange screenshot at full size">
+                <img src="images/arrange.jpg" alt="ZPUNK Arrange view shown inside a phone mockup" loading="eager">
+              </a>
+            </div>
+            <figcaption class="phone-caption">Arrange view</figcaption>
+          </figure>
         </div>
       </section>
       <section class="quick" id="start" aria-labelledby="start-title">
