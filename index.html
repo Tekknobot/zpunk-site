@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b111b">
-  <meta name="description" content="ZPUNK 2.0.6 manual: arrangement, note editing, transient slicing, sampler warp and key detection, shared chord progressions, sound design, mixing, projects and export.">
-  <title>ZPUNK 2.0.6 — Manual</title>
+  <meta name="description" content="ZPUNK 2.0 manual: arrangement, note editing, transient slicing, sampler warp and key detection, shared chord progressions, sound design, mixing, projects and export.">
+  <title>ZPUNK 2.0 — Manual</title>
   <style>
     :root {
       color-scheme: dark;
@@ -68,14 +68,6 @@
     .track:nth-of-type(6) { --tone: var(--chops); }
     .overview-foot { margin-top: 24px; padding-top: 17px; border-top: 1px solid var(--line); color: var(--soft); font-size: .79rem; }
     .quick { padding: 56px 0 34px; border-bottom: 1px solid var(--line); }
-    .updates { padding: 60px 0 49px; border-bottom: 1px solid var(--line); }
-    .updates h2 { font-size: clamp(1.8rem, 3.4vw, 2.65rem); margin: 12px 0 11px; }
-    .updates .intro { max-width: 70ch; }
-    .update-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 15px; margin-top: 25px; }
-    .update-card { padding: 19px 18px 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); }
-    .update-card b { display: block; color: var(--mint); font-size: .68rem; letter-spacing: .13em; text-transform: uppercase; margin-bottom: 11px; }
-    .update-card h3 { font-size: 1.05rem; margin-bottom: 8px; letter-spacing: -.015em; }
-    .update-card p { font-size: .87rem; line-height: 1.6; margin: 0; }
     .note { margin-top: 23px; padding: 16px 19px; border: 1px solid var(--line); border-left: 3px solid var(--mint); border-radius: 6px; background: var(--panel); font-size: .92rem; color: var(--muted); line-height: 1.65; }
     .note strong { color: var(--text); }
     .note p { margin: 0; }
@@ -200,10 +192,9 @@
   <a class="skip" href="#main">Skip to content</a>
   <header class="topbar">
     <div class="wrap topbar-inner">
-      <a class="brand" href="#top" aria-label="ZPUNK manual home">ZPUNK <small>2.0.6 / MANUAL</small></a>
+      <a class="brand" href="#top" aria-label="ZPUNK manual home">ZPUNK <small>2.0 / MANUAL</small></a>
       <nav class="nav" aria-label="Manual sections">
         <a href="#start">Start</a>
-        <a href="#updates">2.0.6 updates</a>
         <a href="#arrange">Arrange</a>
         <a href="#create">Create</a>
         <a href="#sampler">Sampler</a>
@@ -217,14 +208,14 @@
     <div class="wrap" id="top">
       <section class="hero" aria-labelledby="hero-title">
         <div>
-          <div class="eyebrow">The ZPUNK 2.0.6 guide</div>
+          <div class="eyebrow">The ZPUNK 2.0 guide</div>
           <h1 id="hero-title">Create. <span>Arrange.</span> Export.</h1>
           <p class="lede">A pocket music workstation for beats, melodies, sample chops and full song ideas. Five tracks. One touch-first workflow.</p>
           <a class="link" href="#start">Get started <span aria-hidden="true">↗</span></a>
-          <p class="version-note">Updated for 2.0.6 · Some screenshots show earlier 2.0.x builds; see the text for current features and controls.</p>
+          <p class="version-note">Your guide to the ZPUNK 2.0 workflow.</p>
         </div>
         <div class="overview" aria-label="Illustration of the five-track workflow">
-          <div class="overview-top"><span>Five-track workspace</span><span>2.0.6</span></div>
+          <div class="overview-top"><span>Five-track workspace</span><span>2.0</span></div>
           <div class="track"><span class="track-label" style="color:var(--drums)">DRUMS</span><div class="track-lane"><i class="block"></i><i class="block"></i><i class="block dull"></i><i class="block"></i><i class="block"></i><i class="block"></i><i class="block dull"></i><i class="block"></i></div></div>
           <div class="track"><span class="track-label" style="color:var(--bass)">BASS</span><div class="track-lane"><i class="block"></i><i class="block"></i><i class="block"></i><i class="block"></i><i class="block dull"></i><i class="block"></i><i class="block"></i><i class="block"></i></div></div>
           <div class="track"><span class="track-label" style="color:var(--synth)">SYNTH</span><div class="track-lane"><i class="block dull"></i><i class="block"></i><i class="block"></i><i class="block"></i><i class="block dull"></i><i class="block"></i><i class="block"></i><i class="block"></i></div></div>
@@ -241,17 +232,6 @@
           <div class="step"><b>02</b><strong>Create</strong><p>Write notes, generate a pattern, or sequence slices inside a clip.</p></div>
           <div class="step"><b>03</b><strong>Sample &amp; mix</strong><p>Chop audio, shape your patches and balance tracks in MIX.</p></div>
           <div class="step"><b>04</b><strong>Save &amp; export</strong><p>Keep your project or take your music out as audio or MIDI.</p></div>
-        </div>
-      </section>
-      <section class="updates" id="updates" aria-labelledby="updates-title">
-        <div class="section-number">What’s changed / 2.0.2–2.0.6</div>
-        <h2 id="updates-title">More ways to create. A smoother workflow.</h2>
-        <p class="intro">This manual covers the current 2.0.6 experience, including the additions introduced across recent updates.</p>
-        <div class="update-grid">
-          <article class="update-card"><b>Generation</b><h3>More musical options</h3><p>FUNK styles, 90s-inspired HOUSE patterns, shared BASS/SYNTH/PADS progressions and saved generations.</p></article>
-          <article class="update-card"><b>Sampler</b><h3>Smarter chops</h3><p>Transient-based slicing, hit snapping, deeper waveform zoom, BPM analysis and estimated sample key.</p></article>
-          <article class="update-card"><b>Editing &amp; mixing</b><h3>Better control</h3><p>Directly edit generated notes, extend clip patterns, use key guides and balance five tracks with live metering.</p></article>
-          <article class="update-card"><b>2.0.6 stability</b><h3>More reliable loading</h3><p>Persistent transient-marker caching and audio-loading optimizations reduce repeated analysis and improve longer sessions.</p></article>
         </div>
       </section>
       <section class="section" id="arrange" aria-labelledby="arrange-title">
@@ -285,7 +265,6 @@
           <article class="image-feature"><a class="shot" href="images/chops.jpg" target="_blank" rel="noopener" aria-label="View Chops editor screenshot at full size"><img src="images/chops.jpg" width="945" height="2048" alt="ZPUNK CHOPS step editor with sample trigger lanes" loading="lazy"></a><div><h3>02 / Sequence Chops</h3><p>Switch to CHOPS in CREATE and place triggers for your sample slices. Each lane plays a chop, so you can rearrange a break, vocal or melodic phrase against the other tracks.</p><ul class="points"><li><strong>16 chop pads/lanes:</strong> select and audition slices from your loaded sample.</li><li><strong>Step editing:</strong> tap to add/remove triggers, drag to move them, or adjust their length.</li><li><strong>Tempo &amp; mix:</strong> arrange chops on the same song timeline and control their level in MIX.</li></ul></div></article>
         </div>
         <div class="note"><strong>Importing your own audio:</strong> On iPhone/iPad, put samples in <code>Files → On My iPhone/iPad → zpunk → ImportedSamples</code> (folder name and capitalization matter). On Android, make your audio available through the device’s Music/media library. WAV and MP3 are practical choices; convert FLAC files before importing.</div>
-        <div class="note"><strong>2.0.6 loading improvements:</strong> ZPUNK caches original-sample transient markers and reuses them when the underlying sample and marker data have not changed. This avoids unnecessary recalculation during repeated sample/project loads, reduces memory pressure and improves long-session stability. Different audio or changed markers may require reanalysis.</div>
       </section>
       <section class="section" id="generate" aria-labelledby="generate-title">
         <div class="section-head"><div class="section-number">05 / Generate</div><h2 id="generate-title">A starting point in seconds.</h2><p>Generate editable patterns for DRUMS, BASS, SYNTH and PADS. Hold a track name in CREATE, or use GEN, to open the generator for the selected clip.</p></div>
@@ -293,7 +272,6 @@
           <div class="detail"><h3>Choose the direction.</h3><p>Select a genre, style, key and length (1, 2 or 4 bars), then press GENERATE. Try NEW VARIATION for another take and edit the notes directly in CREATE.</p><ul class="points"><li><strong>Genres:</strong> Boom Bap, House, Techno, Breaks and Funk. FUNK includes Disco, Pocket and Electro styles.</li><li><strong>HOUSE / 90s:</strong> a dedicated 90s-inspired style for more rhythmic basslines, melodies and chords.</li><li><strong>Shared progressions:</strong> choose a chord progression (or the genre default) for BASS, SYNTH or PADS. The selected progression is shared so each part can follow the same harmonic movement, while its generated variation remains independent.</li><li><strong>Key awareness:</strong> select the musical key; progression/chord labels reflect that choice.</li><li><strong>Variation history:</strong> save promising generated results, revisit them and use or delete stored variations.</li><li><strong>Important:</strong> committing a generated pattern replaces the notes of the selected clip. CANCEL leaves them unchanged.</li></ul></div>
           <div class="feature-shot"><a class="shot" href="images/generate.jpg" target="_blank" rel="noopener" aria-label="View Generate panel screenshot at full size"><img src="images/generate.jpg" width="945" height="2048" alt="ZPUNK 2.0 Generate panel for House drums with genre, style, key, length and variation" loading="lazy"></a></div>
         </div>
-        <div class="note"><strong>Screen reference:</strong> The GENERATE screenshot shows an earlier HOUSE panel. In 2.0.6 the available genre, progression and history controls go beyond those pictured. Generated notes can now be selected and removed without an overlapping duplicate note interfering with editing.</div>
       </section>
       <section class="section" id="sound" aria-labelledby="sound-title">
         <div class="section-head"><div class="section-number">06 / Sound &amp; Mix</div><h2 id="sound-title">Find your sound. Balance the track.</h2><p>Browse and shape instrument sounds in SOUND, then use the redesigned MIX page to balance the full five-track arrangement.</p></div>
@@ -307,6 +285,6 @@
       </section>
     </div>
   </main>
-  <footer class="footer"><div class="wrap footer-inner"><span>ZPUNK 2.0.6 · Pocket music workstation</span><a href="#top">Back to top ↑</a></div></footer>
+  <footer class="footer"><div class="wrap footer-inner"><span>ZPUNK 2.0 · Pocket music workstation</span><a href="#top">Back to top ↑</a></div></footer>
 </body>
 </html>
