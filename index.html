@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b111b">
-  <meta name="description" content="ZPUNK 2.0 manual: arrangement, note editing, transient slicing, sampler warp and key detection, shared chord progressions, sound design, mixing, projects and export.">
+  <meta name="description" content="ZPUNK manual: arrange, sequence, slice and warp samples, generate music, mix, save and collect projects with synchronized WAV stems, MIDI and samples for desktop DAWs.">
   <title>ZPUNK 2.0 — Manual</title>
   <style>
     :root {
@@ -194,6 +194,37 @@
     .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
     .footer a { color: var(--text); text-decoration: none; }
     .footer a:hover { color: var(--mint); }
+
+    /* Collect & Export — new in the 2.2 workflow, styled as part of the manual. */
+    .collect { padding-top: 76px; padding-bottom: 102px; border-top: 1px solid var(--line); }
+    .collect-lead { max-width: 715px; }
+    .collect-lead h2 { font-size: clamp(2.1rem, 4.4vw, 3.75rem); margin: 13px 0 16px; }
+    .collect-lead p { font-size: 1.02rem; line-height: 1.75; }
+    .collect-content { display:grid; grid-template-columns: 1fr .92fr; gap: clamp(26px,5vw,70px); align-items:start; margin-top: 37px; }
+    .collect-instructions { margin: 0; padding: 0; list-style:none; }
+    .collect-instructions li { display:grid; grid-template-columns: 42px 1fr; gap: 17px; padding: 0 0 24px; }
+    .collect-instructions li + li { border-top: 1px solid var(--line); padding-top: 24px; }
+    .collect-step-num { display:flex; align-items:center; justify-content:center; width: 39px; height:39px; flex-shrink:0; color:var(--mint); border:1px solid rgba(67,212,181,.36); border-radius:11px; background:rgba(67,212,181,.075); font-size:.78rem; letter-spacing:.08em; font-weight:800; }
+    .collect-instructions h3 { font-size: 1.12rem; margin: 0 0 7px; letter-spacing: -.02em; }
+    .collect-instructions p { font-size: .94rem; line-height:1.68; margin:0; }
+    .collect-package { overflow: hidden; border: 1px solid #385064; border-radius: 14px; background: linear-gradient(153deg, #182936, #111b29 68%); box-shadow:0 20px 47px rgba(0,0,0,.16); }
+    .collect-package-top { padding: 24px 25px 19px; border-bottom: 1px solid #314252; }
+    .collect-package-tag { display: inline-flex; padding: 4px 9px; border: 1px solid rgba(67,212,181,.32); border-radius: 99px; color: var(--mint); font-size: .66rem; font-weight: 750; text-transform:uppercase; letter-spacing:.11em; margin-bottom: 15px; }
+    .collect-package-top h3 { font-size: 1.17rem; line-height: 1.35; letter-spacing: -.015em; margin: 0 0 7px; overflow-wrap:anywhere; }
+    .collect-package-top p { font-size: .83rem; margin:0; }
+    .collect-package-body { margin:0; padding: 18px 25px 24px; list-style: none; }
+    .collect-package-body li { display:grid; grid-template-columns: 15px 1fr; gap: 10px; align-items:baseline; padding: 8px 0; }
+    .collect-package-body li + li { border-top:1px solid rgba(255,255,255,.045); }
+    .collect-file-dot { display:block; width: 7px; height:7px; margin-top:7px; border-radius:2px; background: var(--mint); opacity:.8; }
+    .collect-package-body strong { color:var(--text); display:block; font-size:.88rem; font-weight:650; }
+    .collect-package-body span { display:block; color: var(--soft); font-size: .79rem; line-height:1.45; margin-top: 2px; }
+    .collect-render-note { display:grid; grid-template-columns: 110px 1fr; align-items:center; gap: 22px; margin-top: 35px; padding: 27px 30px; border: 1px solid rgba(249,166,72,.24); border-left:3px solid var(--drums); border-radius: 9px; background: linear-gradient(100deg,rgba(249,166,72,.065),rgba(18,28,41,.9)); }
+    .collect-render-stat { font-weight:800; color:var(--drums); font-size:clamp(2.5rem,4.4vw,3.4rem); line-height:1; letter-spacing:-.07em; }
+    .collect-render-stat small { display:block; margin-top:7px; font-size:.69rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:700; }
+    .collect-render-note h3 { margin:0 0 9px; font-size:1.15rem; }
+    .collect-render-note p { font-size:.92rem; line-height:1.68; margin:0; }
+    .collect-fineprint { font-size:.85rem; line-height:1.65; margin:22px 0 0; color:var(--soft); }
+
     @media (max-width: 1040px) {
       .topbar-inner { align-items: flex-start; flex-direction: column; gap: 0; padding-top: 13px; }
       .nav { width: 100%; gap: 21px; }
@@ -252,6 +283,19 @@
       .android-phone { width: min(100%, 248px); }
       .demo-instruction { flex-basis: 100%; }
     }
+
+    @media (max-width: 760px) {
+      .collect { padding-top: 64px; padding-bottom: 69px; }
+      .collect-content { grid-template-columns:1fr; gap: 15px; margin-top:28px; }
+      .collect-package { max-width: 570px; width: 100%; }
+      .collect-render-note { grid-template-columns:90px 1fr; gap:14px; padding:21px 19px; }
+    }
+    @media (max-width: 500px) {
+      .collect-render-note { display:block; }
+      .collect-render-stat { margin-bottom: 17px; }
+      .collect-package-top { padding:22px 19px 18px; }
+      .collect-package-body { padding:13px 19px 19px; }
+    }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .shot, .demo-sound { transition: none; } }
   </style>
 </head>
@@ -269,6 +313,7 @@
         <a href="#generate">Generate</a>
         <a href="#sound">Sound &amp; Mix</a>
         <a href="#save">Save &amp; Export</a>
+        <a href="#collect">Collect &amp; Export</a>
       </nav>
     </div>
   </header>
@@ -304,7 +349,7 @@
           <div class="step"><b>01</b><strong>Arrange</strong><p>Set your tempo and add clips to the five-track song timeline.</p></div>
           <div class="step"><b>02</b><strong>Create</strong><p>Write notes, generate a pattern, or sequence slices inside a clip.</p></div>
           <div class="step"><b>03</b><strong>Sample &amp; mix</strong><p>Chop audio, shape your patches and balance tracks in MIX.</p></div>
-          <div class="step"><b>04</b><strong>Save &amp; export</strong><p>Keep your project or take your music out as audio or MIDI.</p></div>
+          <div class="step"><b>04</b><strong>Save &amp; export</strong><p>Save your work, export audio or MIDI, or collect everything for your desktop DAW.</p></div>
         </div>
       </section>
       <section class="demo" id="demo" aria-labelledby="demo-title">
@@ -377,7 +422,45 @@
         </div>
       </section>
       <section class="section" id="save" aria-labelledby="save-title">
-        <div class="save"><div><div class="section-number">07 / Save &amp; Export</div><h2 id="save-title">Keep the idea. Take it further.</h2><p>Use SAVE in the top bar before closing or switching projects. Export WAV audio or MIDI when you want to share an idea or develop it further in another music app.</p><p>Keep imported sample files available on the device: projects that refer to those files may need them at reload time.</p></div><div class="save-rows"><div class="save-row"><strong>PROJECT</strong><span>Save your clips, notes, arrangement, instrument settings and references to imported audio.</span></div><div class="save-row"><strong>WAV</strong><span>Render your song as audio to share or listen outside ZPUNK.</span></div><div class="save-row"><strong>MIDI</strong><span>Export note and timing data for continued sequencing in other software.</span></div><div class="save-row"><strong>FILES</strong><span>On iOS, find exports in the ZPUNK folder in Files; on Android, check the Music folder.</span></div></div></div>
+        <div class="save"><div><div class="section-number">07 / Save &amp; Export</div><h2 id="save-title">Keep the idea. Take it further.</h2><p>Use SAVE in the top bar before closing or switching projects. Export WAV or MIDI on its own, or use <a href="#collect">COLLECT &amp; EXPORT</a> to take the entire arrangement into a desktop DAW.</p><p>Keep imported samples on your device for everyday project loading. Collect &amp; Export makes copies of referenced audio in a separate ZIP; it does not move or rename your originals.</p></div><div class="save-rows"><div class="save-row"><strong>PROJECT</strong><span>Save your clips, notes, arrangement, instrument settings and references to imported audio.</span></div><div class="save-row"><strong>WAV</strong><span>Render your song as audio to share or listen outside ZPUNK.</span></div><div class="save-row"><strong>MIDI</strong><span>Export note and timing data for continued sequencing in other software.</span></div><div class="save-row"><strong>COLLECT</strong><span>Bundle a master WAV, five aligned audio stems, MIDI, referenced samples and project data into a ZIP. <a href="#collect">See the guide</a>.</span></div><div class="save-row"><strong>FILES</strong><span>On iOS, use the Files save/share interface; on Android, find the export in the device destination used by ZPUNK.</span></div></div></div>
+      </section>
+      <section class="collect" id="collect" aria-labelledby="collect-title">
+        <div class="collect-lead">
+          <div class="section-number">08 / Collect &amp; Export</div>
+          <h2 id="collect-title">Start on mobile. Finish on your desktop.</h2>
+          <p>COLLECT &amp; EXPORT gathers your ZPUNK arrangement into a single ZIP you can transfer to a Mac or PC. It includes five synchronized WAV stems, a stereo master mix, MIDI, referenced samples and project data—ready to continue working in Ableton Live, Logic Pro, FL Studio, Reaper or another DAW.</p>
+        </div>
+        <div class="collect-content">
+          <div>
+            <ol class="collect-instructions">
+              <li><span class="collect-step-num" aria-hidden="true">01</span><div><h3>Save and name your project.</h3><p>Give the project a recognizable title and save the latest changes. The collected ZIP uses your project name; renaming does not alter the original sample files.</p></div></li>
+              <li><span class="collect-step-num" aria-hidden="true">02</span><div><h3>Choose Collect &amp; Export.</h3><p>Run collection from ZPUNK's export workflow. The app renders the full master and each of the five tracks, then packages the files together. Keep ZPUNK open while it completes.</p></div></li>
+              <li><span class="collect-step-num" aria-hidden="true">03</span><div><h3>Move the ZIP to your computer.</h3><p>Save or share the archive from your device, unzip it, then import the WAV stems and MIDI into your DAW. All five stems start at the same timeline position, so they line up without manual adjustment.</p></div></li>
+            </ol>
+          </div>
+          <div class="collect-package" aria-label="Example contents of a collected ZPUNK project ZIP">
+            <div class="collect-package-top">
+              <span class="collect-package-tag">Portable project ZIP</span>
+              <h3>Midnight_Groove_ZPUNK.zip</h3>
+              <p>Example package name and contents</p>
+            </div>
+            <ul class="collect-package-body">
+              <li><i class="collect-file-dot" aria-hidden="true"></i><div><strong>Master WAV</strong><span>Stereo reference mix of your entire song</span></div></li>
+              <li><i class="collect-file-dot" aria-hidden="true"></i><div><strong>DRUMS · BASS · SYNTH · PADS · CHOPS</strong><span>Five full-length, synchronized WAV stems</span></div></li>
+              <li><i class="collect-file-dot" aria-hidden="true"></i><div><strong>MIDI</strong><span>Arrangement notes and timing for desktop instruments</span></div></li>
+              <li><i class="collect-file-dot" aria-hidden="true"></i><div><strong>Samples</strong><span>Referenced drum-kit and imported sample audio</span></div></li>
+              <li><i class="collect-file-dot" aria-hidden="true"></i><div><strong>Project data &amp; information</strong><span>ZPUNK project snapshot and package details</span></div></li>
+            </ul>
+          </div>
+        </div>
+        <aside class="collect-render-note" aria-labelledby="collect-time-title">
+          <div class="collect-render-stat">6×<small>Real-time passes</small></div>
+          <div>
+            <h3 id="collect-time-title">A note about export time.</h3>
+            <p>Collect &amp; Export renders the stereo master and five individual stems <strong>in real time</strong>, one after another. A 2-minute arrangement may therefore take <strong>around 12 minutes or more</strong>, plus time to package the ZIP. For quicker exports, keep arrangements compact—especially when testing ideas. Longer projects take longer and need more free storage for temporary audio. Keep the app open and your device awake until collection finishes.</p>
+          </div>
+        </aside>
+        <p class="collect-fineprint"><strong>Desktop DAW note:</strong> The WAV stems preserve ZPUNK's rendered audio, while MIDI lets you edit the notes with your own instruments. The included ZPUNK project data is not a native Ableton, Logic or FL Studio session file.</p>
       </section>
     </div>
   </main>
