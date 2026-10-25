@@ -61,6 +61,67 @@
     .phone-mock .shot:hover { border:none; }
     .phone-mock img { width:100%; height:auto; display:block; }
     .phone-caption { text-align:center; color: var(--soft); font-size: .79rem; margin-top: 12px; }
+
+    /* Featured demo: a neutral Android-style phone with a centred punch-hole camera. */
+    .hero-links { display: flex; align-items: center; flex-wrap: wrap; column-gap: 25px; row-gap: 0; }
+    .hero-links .link { margin-bottom: 20px; }
+    .hero-links .link-secondary { color: var(--mint); }
+    .demo {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(235px, .84fr);
+      gap: clamp(24px, 5.8vw, 90px);
+      align-items: center;
+      margin-top: 56px;
+      padding: clamp(30px, 5.5vw, 70px);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 81% 45%, rgba(67,212,181,.095), transparent 52%),
+                  linear-gradient(143deg, #15212e, #0d1622 72%);
+    }
+    .demo-copy { position: relative; z-index: 1; }
+    .demo-copy h2 { max-width: 11ch; font-size: clamp(2.5rem, 5vw, 4.45rem); margin: 13px 0 21px; }
+    .demo-copy p { max-width: 43ch; font-size: 1.03rem; line-height: 1.75; }
+    .demo-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 13px; margin-top: 29px; }
+    .demo-sound {
+      appearance: none; cursor: pointer; display: inline-flex; align-items: center;
+      border: 1px solid rgba(67,212,181,.48); border-radius: 999px;
+      padding: 11px 18px; background: rgba(67,212,181,.09);
+      color: var(--mint); font-size: .88rem; font-weight: 700;
+      transition: background .18s, border-color .18s;
+    }
+    .demo-sound:hover { background: rgba(67,212,181,.17); border-color: var(--mint); }
+    .demo-sound:focus-visible { outline-offset: 4px; }
+    .demo-instruction { color: var(--soft); font-size: .79rem; }
+    .demo-device { min-width: 0; margin: 0; display: flex; flex-direction: column; align-items: center; }
+    .android-phone {
+      position: relative; width: min(100%, 273px);
+      padding: 10px 9px 11px;
+      background: linear-gradient(123deg, #273544, #080c12 38%, #111b27 83%, #263340);
+      border: 2px solid #3b4959;
+      border-radius: 43px;
+      box-shadow: 0 32px 67px rgba(0,0,0,.56), 0 0 0 1px rgba(0,0,0,.85),
+                  inset 0 0 0 1px rgba(255,255,255,.06);
+    }
+    .android-phone::before, .android-phone::after {
+      content: ''; position: absolute; width: 3px; background: #4a5c6b;
+    }
+    .android-phone::before { right: -5px; top: 22%; height: 69px; border-radius: 0 3px 3px 0; }
+    .android-phone::after { left: -5px; top: 17%; height: 44px; border-radius: 3px 0 0 3px; }
+    .android-screen {
+      position: relative; width: 100%; aspect-ratio: 9 / 19.5;
+      border: 1px solid #131c26; border-radius: 32px;
+      background: #03060c; overflow: hidden;
+    }
+    .android-screen video { display: block; width: 100%; height: 100%; object-fit: contain; background: #03060c; }
+    .android-camera {
+      pointer-events: none; position: absolute; z-index: 2; left: 50%; top: 8px;
+      transform: translateX(-50%); width: 10px; height: 10px;
+      background: #03070d; border: 2px solid #121c27; border-radius: 50%;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.1);
+    }
+    .demo-device figcaption { margin-top: 21px; text-align: center; color: var(--soft); font-size: .78rem; }
     .quick { padding: 56px 0 34px; border-bottom: 1px solid var(--line); }
     .note { margin-top: 23px; padding: 16px 19px; border: 1px solid var(--line); border-left: 3px solid var(--mint); border-radius: 6px; background: var(--panel); font-size: .92rem; color: var(--muted); line-height: 1.65; }
     .note strong { color: var(--text); }
@@ -179,7 +240,19 @@
       .image-feature .shot { max-width: 320px; margin: 0 auto; }
       .save-row { grid-template-columns: 90px 1fr; gap: 12px; }
     }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .shot { transition: none; } }
+
+    @media (max-width: 760px) {
+      .demo { grid-template-columns: 1fr; gap: 30px; margin-top: 35px; padding: 32px 24px 39px; }
+      .demo-copy h2 { max-width: 13ch; }
+      .demo-device { padding-top: 10px; }
+    }
+    @media (max-width: 500px) {
+      .demo { border-radius: 14px; padding-inline: 20px; }
+      .demo-copy h2 { font-size: clamp(2.25rem, 10vw, 3.2rem); }
+      .android-phone { width: min(100%, 248px); }
+      .demo-instruction { flex-basis: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .shot, .demo-sound { transition: none; } }
   </style>
 </head>
 <body>
@@ -189,6 +262,7 @@
       <a class="brand" href="#top" aria-label="ZPUNK manual home">ZPUNK <small>2.0 / MANUAL</small></a>
       <nav class="nav" aria-label="Manual sections">
         <a href="#start">Start</a>
+        <a href="#demo">Demo</a>
         <a href="#arrange">Arrange</a>
         <a href="#create">Create</a>
         <a href="#sampler">Sampler</a>
@@ -205,7 +279,10 @@
           <div class="eyebrow">The ZPUNK 2.0 guide</div>
           <h1 id="hero-title">Create. <span>Arrange.</span> Export.</h1>
           <p class="lede">A pocket music workstation for beats, melodies, sample chops and full song ideas. Five tracks. One touch-first workflow.</p>
-          <a class="link" href="#start">Get started <span aria-hidden="true">↗</span></a>
+          <div class="hero-links">
+            <a class="link" href="#start">Get started <span aria-hidden="true">↗</span></a>
+            <a class="link link-secondary" href="#demo">Watch demo <span aria-hidden="true">↗</span></a>
+          </div>
           <p class="version-note">Your guide to the ZPUNK 2.0 workflow.</p>
         </div>
         <div class="overview" aria-label="ZPUNK arrange view shown in a phone frame">
@@ -229,6 +306,29 @@
           <div class="step"><b>03</b><strong>Sample &amp; mix</strong><p>Chop audio, shape your patches and balance tracks in MIX.</p></div>
           <div class="step"><b>04</b><strong>Save &amp; export</strong><p>Keep your project or take your music out as audio or MIDI.</p></div>
         </div>
+      </section>
+      <section class="demo" id="demo" aria-labelledby="demo-title">
+        <div class="demo-copy">
+          <div class="eyebrow">ZPUNK / In motion</div>
+          <h2 id="demo-title">See it in action.</h2>
+          <p>Get a feel for the pocket workflow. Watch ZPUNK running on a phone, then explore the tools in the manual below.</p>
+          <div class="demo-actions">
+            <button class="demo-sound" type="button" id="demo-sound-button" aria-controls="zpunk-demo-video" aria-pressed="false">Turn sound on</button>
+            <span class="demo-instruction">The preview starts muted. Video controls are below.</span>
+          </div>
+        </div>
+        <figure class="demo-device" aria-label="ZPUNK demo in an Android-style phone frame">
+          <div class="android-phone">
+            <div class="android-screen">
+              <video id="zpunk-demo-video" aria-label="ZPUNK demonstration" controls autoplay muted loop playsinline preload="metadata">
+                <source src="videos/demo.mp4" type="video/mp4">
+                Your browser does not support embedded video. <a href="videos/demo.mp4">Open the demo video.</a>
+              </video>
+              <span class="android-camera" aria-hidden="true"></span>
+            </div>
+          </div>
+          <figcaption>Watch the ZPUNK demo · portrait playback</figcaption>
+        </figure>
       </section>
       <section class="section" id="arrange" aria-labelledby="arrange-title">
         <div class="section-head"><div class="section-number">02 / Arrange</div><h2 id="arrange-title">Build beyond the loop.</h2><p>ARRANGE is the multitrack song timeline. Place patterns across bars, adjust the song tempo, and build complete sections and variations.</p></div>
@@ -282,5 +382,32 @@
     </div>
   </main>
   <footer class="footer"><div class="wrap footer-inner"><span>ZPUNK 2.0 · Pocket music workstation</span><a href="#top">Back to top ↑</a></div></footer>
+  <script>
+    // Muted autoplay gives a quiet preview; this button lets visitors opt in to audio.
+    (() => {
+      const video = document.getElementById('zpunk-demo-video');
+      const soundButton = document.getElementById('demo-sound-button');
+      if (!video || !soundButton) return;
+
+      const syncSoundButton = () => {
+        const withSound = !video.muted;
+        soundButton.textContent = withSound ? 'Mute demo' : 'Turn sound on';
+        soundButton.setAttribute('aria-pressed', String(withSound));
+      };
+      soundButton.addEventListener('click', () => {
+        video.muted = !video.muted;
+        syncSoundButton();
+        if (video.paused) video.play().catch(() => {});
+      });
+      video.addEventListener('volumechange', syncSoundButton);
+      syncSoundButton();
+
+      // Don't automatically play moving media for visitors who request reduced motion.
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        video.autoplay = false;
+        video.pause();
+      }
+    })();
+  </script>
 </body>
 </html>
