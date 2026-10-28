@@ -1,0 +1,9 @@
+{
+  "name": "zpunk-manual",
+  "private": true,
+  "version": "1.0.0",
+  "description": "ZPUNK manual and music gallery",
+  "scripts": {
+    "build": "node scripts/build-gallery.mjs"
+  }
+}

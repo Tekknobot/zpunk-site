@@ -398,6 +398,47 @@
     @media (prefers-reduced-motion: reduce) {
       .sections-trigger,.menu-glyph i,.directory-grid a { transition:none; }
     }
+
+    /* Made with ZPUNK — quiet, responsive video gallery. */
+    .channel { padding: 99px 0 94px; border-bottom: 1px solid var(--line); }
+    .channel-heading { display:flex; justify-content:space-between; align-items:end; gap:24px; margin-bottom:33px; }
+    .channel-heading h2 { font-size:clamp(2.4rem,5vw,4.3rem); letter-spacing:-.055em; margin:11px 0 16px; }
+    .channel-heading p { max-width:60ch; line-height:1.7; margin:0; }
+    .channel-label { color:var(--mint); font-size:.76rem; font-weight:750; letter-spacing:.14em; text-transform:uppercase; }
+    .channel-count { flex-shrink:0; color:var(--soft); font-size:.79rem; padding-bottom:5px; }
+    .channel-gallery { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px; }
+    .channel-tile { min-width:0; padding:16px 13px 19px; border:1px solid var(--line); border-radius:13px; background:linear-gradient(155deg,#14202d,#101823); }
+    .channel-tile button { border:0; padding:0; width:100%; background:transparent; cursor:pointer; color:inherit; display:flex; flex-direction:column; gap:15px; text-align:left; align-items:stretch; }
+    .channel-phone { position:relative; align-self:center; display:block; width:min(100%,181px); padding:6px; aspect-ratio:9/19.15; border:2px solid #3a4b58; border-radius:29px; background:linear-gradient(130deg,#293b47,#060a10 50%,#2a3a45); box-shadow:0 12px 26px rgba(0,0,0,.35); transition:transform .2s,border-color .2s; }
+    .channel-tile button:hover .channel-phone,.channel-tile button:focus-visible .channel-phone { transform:translateY(-3px); border-color:var(--mint); }
+    .channel-screen { position:relative; display:block; width:100%; height:100%; border-radius:22px; overflow:hidden; background:radial-gradient(circle at 52% 34%,rgba(67,212,181,.18),transparent 35%),repeating-linear-gradient(0deg,transparent,transparent 26px,rgba(67,212,181,.032) 27px),#0b1821; }
+    .channel-screen::before { position:absolute; content:""; z-index:3; pointer-events:none; width:8px; height:8px; border-radius:50%; top:7px; left:50%; transform:translateX(-50%); background:#02060a; border:1px solid #24313a; }
+    .channel-thumbnail { display:block; width:100%; height:100%; object-fit:contain; opacity:0; transition:opacity .2s; position:absolute; inset:0; background:#05090f; }
+    .channel-thumbnail.is-ready { opacity:1; }
+    .channel-poster { object-fit:cover; opacity:1; }
+    .channel-screen-brand { position:absolute; top:40%; left:0; width:100%; text-align:center; font-weight:850; font-size:clamp(.75rem,1.6vw,1.05rem); letter-spacing:.15em; color:rgba(221,255,247,.48); }
+    .channel-play { position:absolute; z-index:4; left:50%; top:52%; transform:translate(-50%,-50%); width:49px; height:49px; border-radius:50%; display:grid; place-items:center; background:rgba(7,19,24,.86); color:#c9fff1; border:1px solid rgba(67,212,181,.83); box-shadow:0 4px 20px rgba(0,0,0,.5); }
+    .channel-play svg { width:20px; height:20px; margin-left:3px; }
+    .channel-title { display:block; font-size:.9rem; font-weight:750; letter-spacing:-.017em; line-height:1.35; overflow-wrap:anywhere; }
+    .channel-meta { display:block; margin-top:6px; font-size:.68rem; color:var(--soft); font-weight:700; letter-spacing:.11em; }
+    .channel-state { min-height:100px; padding:23px 25px; border:1px solid var(--line); border-radius:12px; background:var(--panel); color:var(--muted); }
+    .channel-state p { margin:0; }
+    .channel-state strong { color:var(--text); display:block; margin-bottom:6px; }
+    .channel-state[hidden] { display:none; }
+    .channel-footnote { margin:23px 0 0; color:var(--soft); font-size:.83rem; }
+    .channel-dialog { width:min(510px,calc(100% - 24px)); max-width:calc(100% - 24px); max-height:calc(100dvh - 18px); padding:15px 16px 20px; border:1px solid #3c5362; border-radius:15px; background:#121c28; color:var(--text); box-shadow:0 24px 90px rgba(0,0,0,.75); overflow-y:auto; }
+    .channel-dialog::backdrop { background:rgba(2,7,11,.88); backdrop-filter:blur(5px); }
+    .channel-dialog-head { display:flex; justify-content:space-between; align-items:center; gap:15px; margin-bottom:13px; }
+    .channel-dialog-head h3 { margin:0; font-size:1.05rem; letter-spacing:-.02em; line-height:1.35; overflow-wrap:anywhere; }
+    .channel-dialog-close { flex-shrink:0; display:grid; place-items:center; width:38px; height:38px; padding:0; color:var(--text); background:#1c2c39; border:1px solid #3b4c5a; border-radius:8px; font-size:1.45rem; cursor:pointer; }
+    .channel-dialog-close:hover { color:var(--mint); border-color:var(--mint); }
+    .channel-dialog-phone { width:min(100%,280px,calc((100dvh - 130px)*.44)); padding:7px; aspect-ratio:9/19.15; margin:0 auto; border:2px solid #3e505d; border-radius:32px; background:linear-gradient(135deg,#273945,#050911 50%,#263744); }
+    .channel-dialog-screen { width:100%; height:100%; border-radius:24px; overflow:hidden; background:#030609; }
+    .channel-dialog-screen video { width:100%; height:100%; display:block; object-fit:contain; background:#030609; }
+    @media (max-width:960px) { .channel-gallery { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+    @media (max-width:760px) { .channel { padding:67px 0 65px; } .channel-gallery { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; } .channel-heading { align-items:start; } .channel-tile { padding:11px 9px 14px; } .channel-phone { width:min(100%,160px); } }
+    @media (max-width:430px) { .channel-heading { display:block; } .channel-count { display:block; margin-top:14px; } .channel-title { font-size:.82rem; } .channel-meta { font-size:.61rem; } .channel-phone { border-radius:23px; padding:5px; } .channel-screen { border-radius:17px; } }
+    @media (prefers-reduced-motion:reduce) { .channel-phone,.channel-thumbnail { transition:none; } }
   </style>
 </head>
 <body>
@@ -427,23 +468,24 @@
           <a href="#approach" data-section-link><span class="directory-index">01</span><span>The Approach</span></a>
           <a href="#start" data-section-link><span class="directory-index">02</span><span>Quick Start</span></a>
           <a href="#demo" data-section-link><span class="directory-index">03</span><span>Watch Demo</span></a>
+          <a href="#channel" data-section-link><span class="directory-index">04</span><span>Made with ZPUNK</span></a>
         </div>
       </div>
       <div class="directory-group">
         <h3>02 <span>Make music</span></h3>
         <div class="directory-grid">
-          <a href="#arrange" data-section-link><span class="directory-index">04</span><span>Arrange</span></a>
-          <a href="#create" data-section-link><span class="directory-index">05</span><span>Create</span></a>
-          <a href="#sampler" data-section-link><span class="directory-index">06</span><span>Sampler &amp; Chops</span></a>
-          <a href="#generate" data-section-link><span class="directory-index">07</span><span>Generate</span></a>
-          <a href="#sound" data-section-link><span class="directory-index">08</span><span>Sound &amp; Mix</span></a>
+          <a href="#arrange" data-section-link><span class="directory-index">05</span><span>Arrange</span></a>
+          <a href="#create" data-section-link><span class="directory-index">06</span><span>Create</span></a>
+          <a href="#sampler" data-section-link><span class="directory-index">07</span><span>Sampler &amp; Chops</span></a>
+          <a href="#generate" data-section-link><span class="directory-index">08</span><span>Generate</span></a>
+          <a href="#sound" data-section-link><span class="directory-index">09</span><span>Sound &amp; Mix</span></a>
         </div>
       </div>
       <div class="directory-group">
         <h3>03 <span>Finish &amp; export</span></h3>
         <div class="directory-grid">
-          <a href="#save" data-section-link><span class="directory-index">09</span><span>Save &amp; Export</span></a>
-          <a href="#collect" data-section-link><span class="directory-index">10</span><span>Collect &amp; Export</span></a>
+          <a href="#save" data-section-link><span class="directory-index">10</span><span>Save &amp; Export</span></a>
+          <a href="#collect" data-section-link><span class="directory-index">11</span><span>Collect &amp; Export</span></a>
         </div>
       </div>
     </nav>
@@ -551,6 +593,31 @@
           <figcaption>Watch the ZPUNK demo · portrait playback</figcaption>
         </figure>
       </section>
+
+      <section class="channel" id="channel" aria-labelledby="channel-title">
+        <div class="channel-heading">
+          <div>
+            <span class="channel-label">ZPUNK / Music gallery</span>
+            <h2 id="channel-title">Made with ZPUNK.</h2>
+            <p>A growing collection of musical sketches, loops and performances created with ZPUNK. No categories. Just music.</p>
+          </div>
+          <span class="channel-count" id="channel-count" aria-live="polite"></span>
+        </div>
+        <div id="channel-gallery" class="channel-gallery" aria-label="Music sessions made with ZPUNK"></div>
+        <div id="channel-state" class="channel-state" role="status">
+          <p>Loading music sessions…</p>
+        </div>
+        <p class="channel-footnote">Select a session to watch and listen. Videos open with sound and playback controls.</p>
+      </section>
+      <dialog class="channel-dialog" id="channel-dialog" aria-labelledby="channel-dialog-title">
+        <div class="channel-dialog-head">
+          <h3 id="channel-dialog-title">Made with ZPUNK</h3>
+          <button class="channel-dialog-close" id="channel-dialog-close" type="button" aria-label="Close video">&times;</button>
+        </div>
+        <div class="channel-dialog-phone"><div class="channel-dialog-screen">
+          <video id="channel-dialog-video" controls playsinline preload="none">Your browser does not support HTML5 video.</video>
+        </div></div>
+      </dialog>
       <section class="section" id="arrange" aria-labelledby="arrange-title">
         <div class="section-head"><div class="section-number">02 / Arrange</div><h2 id="arrange-title">Build beyond the loop.</h2><p>ARRANGE is the multitrack song timeline. Place patterns across bars, adjust the song tempo, and build complete sections and variations.</p></div>
         <div class="split">
@@ -663,7 +730,7 @@
       const links = [...panel.querySelectorAll('[data-section-link]')];
       const entries = [{id:'top',label:'Introduction'},
         {id:'approach',label:'The Approach'}, {id:'start',label:'Quick Start'},
-        {id:'demo',label:'Watch Demo'}, {id:'arrange',label:'Arrange'},
+        {id:'demo',label:'Watch Demo'}, {id:'channel',label:'Made with ZPUNK'}, {id:'arrange',label:'Arrange'},
         {id:'create',label:'Create'}, {id:'sampler',label:'Sampler & Chops'},
         {id:'generate',label:'Generate'}, {id:'sound',label:'Sound & Mix'},
         {id:'save',label:'Save & Export'}, {id:'collect',label:'Collect & Export'}
@@ -748,6 +815,159 @@
         video.pause();
       }
     })();
+
+    // Music gallery: a tiny JSON manifest generated from videos/ on every deployment.
+    // demo.mp4 remains in the standalone demo section and can never enter this gallery.
+    (() => {
+      const grid = document.getElementById('channel-gallery');
+      const status = document.getElementById('channel-state');
+      const count = document.getElementById('channel-count');
+      const dialog = document.getElementById('channel-dialog');
+      const dialogTitle = document.getElementById('channel-dialog-title');
+      const player = document.getElementById('channel-dialog-video');
+      const closeButton = document.getElementById('channel-dialog-close');
+      const demo = document.getElementById('zpunk-demo-video');
+      if (!grid || !dialog || !player) return;
+      let lastTrigger;
+
+      const showStatus = (heading, message) => {
+        status.hidden = false;
+        status.replaceChildren();
+        const strong = document.createElement('strong');
+        strong.textContent = heading;
+        const text = document.createElement('p');
+        text.textContent = message;
+        status.append(strong, text);
+      };
+      const openVideo = (item, trigger) => {
+        lastTrigger = trigger;
+        if (demo && !demo.paused) demo.pause();
+        dialogTitle.textContent = item.title;
+        player.src = item.url;
+        dialog.showModal();
+        // Browser playback policies can prevent autoplay; controls remain available.
+        player.play().catch(() => {});
+      };
+      closeButton.addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+      dialog.addEventListener('close', () => {
+        player.pause();
+        player.removeAttribute('src');
+        player.load();
+        if (lastTrigger && lastTrigger.isConnected) lastTrigger.focus();
+      });
+
+      const previewObserver = 'IntersectionObserver' in window
+        ? new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+              if (!entry.isIntersecting) return;
+              const preview = entry.target;
+              previewObserver.unobserve(preview);
+              preview.addEventListener('loadedmetadata', () => {
+                const duration = preview.duration;
+                if (Number.isFinite(duration) && duration > 0.2) {
+                  try { preview.currentTime = Math.min(0.35, duration * .12); }
+                  catch (_) { /* Keep the fallback artwork. */ }
+                }
+              }, { once:true });
+              preview.addEventListener('seeked', () => preview.classList.add('is-ready'), { once:true });
+              preview.preload = 'metadata';
+              preview.src = preview.dataset.src;
+            });
+          }, { rootMargin:'180px' })
+        : null;
+      const playIcon = () => {
+        const namespace = 'http://www.w3.org/2000/svg';
+        const svg = document.createElementNS(namespace,'svg');
+        svg.setAttribute('viewBox','0 0 24 24');
+        svg.setAttribute('fill','currentColor');
+        svg.setAttribute('aria-hidden','true');
+        const path = document.createElementNS(namespace,'path');
+        path.setAttribute('d','M8 5.6a1 1 0 0 1 1.54-.84l10 6.4a1 1 0 0 1 0 1.68l-10 6.4A1 1 0 0 1 8 18.4Z');
+        svg.append(path);
+        return svg;
+      };
+      const render = items => {
+        status.hidden = true;
+        grid.replaceChildren();
+        const fragment = document.createDocumentFragment();
+        for (const item of items) {
+          const tile = document.createElement('article');
+          tile.className = 'channel-tile';
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.setAttribute('aria-label', 'Play ' + item.title);
+          const device = document.createElement('span');
+          device.className = 'channel-phone';
+          const screen = document.createElement('span');
+          screen.className = 'channel-screen';
+          const brand = document.createElement('span');
+          brand.className = 'channel-screen-brand';
+          brand.setAttribute('aria-hidden','true');
+          brand.textContent = 'ZPUNK';
+          screen.append(brand);
+          if (item.poster) {
+            const picture = document.createElement('img');
+            picture.className = 'channel-thumbnail channel-poster';
+            picture.loading = 'lazy';
+            picture.src = item.poster;
+            picture.alt = '';
+            screen.append(picture);
+          } else {
+            const preview = document.createElement('video');
+            preview.className = 'channel-thumbnail';
+            preview.muted = true;
+            preview.playsInline = true;
+            preview.preload = 'none';
+            preview.setAttribute('aria-hidden','true');
+            preview.tabIndex = -1;
+            preview.dataset.src = item.url;
+            screen.append(preview);
+            if (previewObserver) previewObserver.observe(preview);
+          }
+          const play = document.createElement('span');
+          play.className = 'channel-play';
+          play.setAttribute('aria-hidden','true');
+          play.append(playIcon());
+          screen.append(play);
+          device.append(screen);
+          const caption = document.createElement('span');
+          const name = document.createElement('span');
+          name.className = 'channel-title';
+          name.textContent = item.title;
+          const meta = document.createElement('span');
+          meta.className = 'channel-meta';
+          meta.textContent = 'WATCH SESSION';
+          caption.append(name,meta);
+          button.append(device,caption);
+          button.addEventListener('click', () => openVideo(item,button));
+          tile.append(button);
+          fragment.append(tile);
+        }
+        grid.append(fragment);
+        count.textContent = items.length + (items.length === 1 ? ' session' : ' sessions');
+      };
+      fetch('videos/gallery.json', { cache:'no-store' })
+        .then(response => {
+          if (!response.ok) throw new Error('Gallery manifest unavailable');
+          return response.json();
+        })
+        .then(data => {
+          const items = Array.isArray(data.items) ? data.items : [];
+          const valid = items.filter(item => item && typeof item.file === 'string'
+            && /\.mp4$/i.test(item.file) && !/^demo\.mp4$/i.test(item.file)
+            && /^[^/\\]+$/.test(item.file) && typeof item.title === 'string'
+            && typeof item.url === 'string' && item.url.startsWith('videos/'));
+          if (!valid.length) {
+            count.textContent = '0 sessions';
+            showStatus('Sessions are on the way.', 'New music created with ZPUNK will appear here.');
+            return;
+          }
+          render(valid);
+        })
+        .catch(() => showStatus('Gallery unavailable.', 'The video list could not be loaded. Redeploy the complete site with its gallery build files.'));
+    })();
+
   </script>
 </body>
 </html>
