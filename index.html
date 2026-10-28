@@ -225,6 +225,48 @@
     .collect-render-note p { font-size:.92rem; line-height:1.68; margin:0; }
     .collect-fineprint { font-size:.85rem; line-height:1.65; margin:22px 0 0; color:var(--soft); }
 
+
+    /* The ZPUNK Approach — an editorial introduction, not another manual chapter. */
+    .approach { padding: 86px 0 77px; border-bottom: 1px solid var(--line); }
+    .approach-intro { display: grid; grid-template-columns: 1.06fr .94fr; gap: clamp(35px, 6.4vw, 95px); align-items: center; }
+    .approach-copy h2 { font-size: clamp(2.7rem, 5.25vw, 5.2rem); margin: 14px 0 24px; letter-spacing: -.055em; }
+    .approach-copy h2 span { color: var(--mint); }
+    .approach-copy p { max-width: 55ch; font-size: 1.05rem; line-height: 1.8; }
+    .approach-tracks { padding: 24px 27px 18px; border: 1px solid #344353; border-radius: 13px; background: linear-gradient(145deg, #152230, #111b28); }
+    .approach-tracks-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding-bottom: 17px; color: var(--soft); font-size: .68rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .approach-tracks-top span:last-child { color: var(--mint); }
+    .approach-track { display: grid; grid-template-columns: 7px minmax(0,1fr) auto; gap: 16px; align-items: center; min-height: 49px; border-top: 1px solid rgba(255,255,255,.065); }
+    .approach-track::before { content: ''; width: 7px; height: 24px; border-radius: 2px; background: var(--track-tone); }
+    .approach-track strong { font-size: .84rem; letter-spacing: .075em; }
+    .approach-track small { color: var(--soft); font-size: .78rem; }
+    .approach-track.drums { --track-tone: var(--drums); }
+    .approach-track.bass { --track-tone: var(--bass); }
+    .approach-track.synth { --track-tone: var(--synth); }
+    .approach-track.pads { --track-tone: var(--pads); }
+    .approach-track.chops { --track-tone: var(--chops); }
+    .approach-tracks-bottom { margin: 17px 0 0; color: var(--soft); font-size: .79rem; }
+    .approach-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: 59px; }
+    .approach-point { min-width: 0; border-top: 1px solid #3b4d5c; padding-top: 17px; }
+    .approach-point-number { display: block; color: var(--mint); font-size: .7rem; letter-spacing: .12em; font-weight: 750; margin-bottom: 16px; }
+    .approach-point h3 { font-size: 1.18rem; letter-spacing: -.025em; margin: 0 0 12px; }
+    .approach-point p { font-size: .91rem; line-height: 1.69; margin: 0 0 15px; }
+    .approach-point a { color: var(--text); font-size: .81rem; font-weight: 650; text-decoration: none; border-bottom: 1px solid rgba(67,212,181,.48); padding-bottom: 4px; }
+    .approach-point a:hover { color: var(--mint); }
+    @media (max-width: 870px) {
+      .approach-intro { grid-template-columns: 1fr; gap: 29px; }
+      .approach-tracks { max-width: 650px; }
+      .approach-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 29px 25px; margin-top: 43px; }
+    }
+    @media (max-width: 500px) {
+      .approach { padding: 60px 0 57px; }
+      .approach-copy h2 { font-size: clamp(2.6rem, 12vw, 3.7rem); }
+      .approach-copy p { font-size: 1rem; }
+      .approach-tracks { padding: 20px 19px 16px; }
+      .approach-grid { grid-template-columns: 1fr; gap: 24px; }
+      .approach-point { padding-top: 14px; }
+      .approach-point-number { margin-bottom: 10px; }
+    }
+
     @media (max-width: 1040px) {
       .topbar-inner { align-items: flex-start; flex-direction: column; gap: 0; padding-top: 13px; }
       .nav { width: 100%; gap: 21px; }
@@ -305,6 +347,7 @@
     <div class="wrap topbar-inner">
       <a class="brand" href="#top" aria-label="ZPUNK manual home">ZPUNK <small>2.0 / MANUAL</small></a>
       <nav class="nav" aria-label="Manual sections">
+        <a href="#approach">Approach</a>
         <a href="#start">Start</a>
         <a href="#demo">Demo</a>
         <a href="#arrange">Arrange</a>
@@ -340,6 +383,50 @@
             </div>
             <figcaption class="phone-caption">Arrange view</figcaption>
           </figure>
+        </div>
+      </section>
+      <section class="approach" id="approach" aria-labelledby="approach-title">
+        <div class="approach-intro">
+          <div class="approach-copy">
+            <div class="section-number">The ZPUNK approach</div>
+            <h2 id="approach-title">Less setup.<br><span>More music.</span></h2>
+            <p>Good ideas don’t always arrive when you’re sitting in front of a studio. ZPUNK keeps the essentials together in one touch-first workspace, so you can start with a beat, a melody, or a sample—and build from there.</p>
+          </div>
+          <div class="approach-tracks" aria-label="Five dedicated tracks are available in ZPUNK">
+            <div class="approach-tracks-top"><span>Your workspace</span><span>Ready from the start</span></div>
+            <div class="approach-track drums"><strong>DRUMS</strong><small>Rhythm</small></div>
+            <div class="approach-track bass"><strong>BASS</strong><small>Low end</small></div>
+            <div class="approach-track synth"><strong>SYNTH</strong><small>Melodies</small></div>
+            <div class="approach-track pads"><strong>PADS</strong><small>Harmony</small></div>
+            <div class="approach-track chops"><strong>CHOPS</strong><small>Samples</small></div>
+            <p class="approach-tracks-bottom">Five musical roles. One arrangement.</p>
+          </div>
+        </div>
+        <div class="approach-grid">
+          <article class="approach-point">
+            <span class="approach-point-number">01 / READY TO CREATE</span>
+            <h3>A place for every part.</h3>
+            <p>Drums, bass, synth, pads and chops already have their own space. No need to build a track layout before exploring an idea.</p>
+            <a href="#arrange">Explore the arrangement ↗</a>
+          </article>
+          <article class="approach-point">
+            <span class="approach-point-number">02 / FIND A STARTING POINT</span>
+            <h3>Generate, then make it yours.</h3>
+            <p>Choose a genre and style to generate rhythmic and melodic patterns. Use a chord progression to help connect your musical parts.</p>
+            <a href="#generate">Explore generation ↗</a>
+          </article>
+          <article class="approach-point">
+            <span class="approach-point-number">03 / STAY HANDS-ON</span>
+            <h3>Shape the details.</h3>
+            <p>Edit individual notes and drum hits, chop samples, design drum sounds and audition synth patches as you adjust them.</p>
+            <a href="#sound">Explore sound design ↗</a>
+          </article>
+          <article class="approach-point">
+            <span class="approach-point-number">04 / KEEP GOING</span>
+            <h3>From sketch to song.</h3>
+            <p>Arrange ideas on a timeline, then export WAV, MIDI or collected stems when you’re ready to continue on your computer.</p>
+            <a href="#collect">Explore collecting &amp; export ↗</a>
+          </article>
         </div>
       </section>
       <section class="quick" id="start" aria-labelledby="start-title">
