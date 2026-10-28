@@ -399,15 +399,22 @@
       .sections-trigger,.menu-glyph i,.directory-grid a { transition:none; }
     }
 
-    /* Made with ZPUNK — quiet, responsive video gallery. */
+    /* Made with ZPUNK — horizontally scrollable music sessions. */
     .channel { padding: 99px 0 94px; border-bottom: 1px solid var(--line); }
     .channel-heading { display:flex; justify-content:space-between; align-items:end; gap:24px; margin-bottom:33px; }
     .channel-heading h2 { font-size:clamp(2.4rem,5vw,4.3rem); letter-spacing:-.055em; margin:11px 0 16px; }
     .channel-heading p { max-width:60ch; line-height:1.7; margin:0; }
     .channel-label { color:var(--mint); font-size:.76rem; font-weight:750; letter-spacing:.14em; text-transform:uppercase; }
-    .channel-count { flex-shrink:0; color:var(--soft); font-size:.79rem; padding-bottom:5px; }
-    .channel-gallery { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px; }
-    .channel-tile { min-width:0; padding:16px 13px 19px; border:1px solid var(--line); border-radius:13px; background:linear-gradient(155deg,#14202d,#101823); }
+    .channel-toolbar { display:flex; align-items:center; justify-content:flex-end; flex-wrap:wrap; gap:17px; padding-bottom:5px; }
+    .channel-count { flex-shrink:0; color:var(--soft); font-size:.79rem; }
+    .channel-arrows { display:flex; gap:8px; }
+    .channel-arrows[hidden] { display:none; }
+    .channel-arrow { display:grid; place-items:center; width:42px; height:42px; padding:0; border:1px solid #405666; border-radius:9px; background:#172635; color:var(--mint); font-size:1.5rem; line-height:1; cursor:pointer; transition:background .16s,border-color .16s; }
+    .channel-arrow:hover:not(:disabled) { background:#223848; border-color:var(--mint); }
+    .channel-arrow:disabled { opacity:.32; cursor:default; }
+    .channel-gallery { display:flex; gap:18px; overflow-x:auto; overflow-y:hidden; overscroll-behavior-x:contain; scroll-snap-type:x mandatory; scroll-padding-inline:2px; padding:4px 2px 18px; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+    .channel-gallery::-webkit-scrollbar { display:none; }
+    .channel-tile { flex:0 0 calc((100% - 54px)/4); min-width:0; scroll-snap-align:start; padding:16px 13px 19px; border:1px solid var(--line); border-radius:13px; background:linear-gradient(155deg,#14202d,#101823); }
     .channel-tile button { border:0; padding:0; width:100%; background:transparent; cursor:pointer; color:inherit; display:flex; flex-direction:column; gap:15px; text-align:left; align-items:stretch; }
     .channel-phone { position:relative; align-self:center; display:block; width:min(100%,181px); padding:6px; aspect-ratio:9/19.15; border:2px solid #3a4b58; border-radius:29px; background:linear-gradient(130deg,#293b47,#060a10 50%,#2a3a45); box-shadow:0 12px 26px rgba(0,0,0,.35); transition:transform .2s,border-color .2s; }
     .channel-tile button:hover .channel-phone,.channel-tile button:focus-visible .channel-phone { transform:translateY(-3px); border-color:var(--mint); }
@@ -435,10 +442,10 @@
     .channel-dialog-phone { width:min(100%,280px,calc((100dvh - 130px)*.44)); padding:7px; aspect-ratio:9/19.15; margin:0 auto; border:2px solid #3e505d; border-radius:32px; background:linear-gradient(135deg,#273945,#050911 50%,#263744); }
     .channel-dialog-screen { width:100%; height:100%; border-radius:24px; overflow:hidden; background:#030609; }
     .channel-dialog-screen video { width:100%; height:100%; display:block; object-fit:contain; background:#030609; }
-    @media (max-width:960px) { .channel-gallery { grid-template-columns:repeat(3,minmax(0,1fr)); } }
-    @media (max-width:760px) { .channel { padding:67px 0 65px; } .channel-gallery { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; } .channel-heading { align-items:start; } .channel-tile { padding:11px 9px 14px; } .channel-phone { width:min(100%,160px); } }
-    @media (max-width:430px) { .channel-heading { display:block; } .channel-count { display:block; margin-top:14px; } .channel-title { font-size:.82rem; } .channel-meta { font-size:.61rem; } .channel-phone { border-radius:23px; padding:5px; } .channel-screen { border-radius:17px; } }
-    @media (prefers-reduced-motion:reduce) { .channel-phone,.channel-thumbnail { transition:none; } }
+    @media (max-width:960px) { .channel-tile { flex-basis:calc((100% - 36px)/3); } }
+    @media (max-width:760px) { .channel { padding:67px 0 65px; } .channel-gallery { gap:12px; } .channel-tile { flex-basis:clamp(175px,57vw,250px); padding:11px 9px 14px; } .channel-heading { align-items:start; } .channel-phone { width:min(100%,160px); } }
+    @media (max-width:430px) { .channel-heading { display:block; margin-bottom:22px; } .channel-toolbar { justify-content:space-between; margin-top:16px; } .channel-title { font-size:.82rem; } .channel-meta { font-size:.61rem; } .channel-phone { border-radius:23px; padding:5px; } .channel-screen { border-radius:17px; } }
+    @media (prefers-reduced-motion:reduce) { .channel-phone,.channel-thumbnail,.channel-arrow { transition:none; } .channel-gallery { scroll-behavior:auto; } }
   </style>
 </head>
 <body>
@@ -601,13 +608,19 @@
             <h2 id="channel-title">Made with ZPUNK.</h2>
             <p>A growing collection of musical sketches, loops and performances created with ZPUNK. No categories. Just music.</p>
           </div>
-          <span class="channel-count" id="channel-count" aria-live="polite"></span>
+          <div class="channel-toolbar">
+            <span class="channel-count" id="channel-count" aria-live="polite"></span>
+            <div class="channel-arrows" id="channel-arrows" role="group" aria-label="Browse music sessions" hidden>
+              <button type="button" class="channel-arrow" id="channel-previous" aria-label="Previous session" aria-controls="channel-gallery" disabled>&larr;</button>
+              <button type="button" class="channel-arrow" id="channel-next" aria-label="Next session" aria-controls="channel-gallery">&rarr;</button>
+            </div>
+          </div>
         </div>
-        <div id="channel-gallery" class="channel-gallery" aria-label="Music sessions made with ZPUNK"></div>
+        <div id="channel-gallery" class="channel-gallery" role="region" aria-roledescription="carousel" aria-label="Music sessions made with ZPUNK" tabindex="0"></div>
         <div id="channel-state" class="channel-state" role="status">
           <p>Loading music sessions…</p>
         </div>
-        <p class="channel-footnote">Select a session to watch and listen. Videos open with sound and playback controls.</p>
+        <p class="channel-footnote">Swipe sideways or use the arrows to explore sessions. Select a video to watch with sound and playback controls.</p>
       </section>
       <dialog class="channel-dialog" id="channel-dialog" aria-labelledby="channel-dialog-title">
         <div class="channel-dialog-head">
@@ -822,6 +835,9 @@
       const grid = document.getElementById('channel-gallery');
       const status = document.getElementById('channel-state');
       const count = document.getElementById('channel-count');
+      const arrows = document.getElementById('channel-arrows');
+      const previous = document.getElementById('channel-previous');
+      const next = document.getElementById('channel-next');
       const dialog = document.getElementById('channel-dialog');
       const dialogTitle = document.getElementById('channel-dialog-title');
       const player = document.getElementById('channel-dialog-video');
@@ -829,6 +845,24 @@
       const demo = document.getElementById('zpunk-demo-video');
       if (!grid || !dialog || !player) return;
       let lastTrigger;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const updateCarousel = () => {
+        const limit = Math.max(0, grid.scrollWidth - grid.clientWidth);
+        arrows.hidden = limit < 3;
+        previous.disabled = grid.scrollLeft <= 3;
+        next.disabled = grid.scrollLeft >= limit - 3;
+      };
+      const advance = direction => {
+        const first = grid.querySelector('.channel-tile');
+        if (!first) return;
+        const second = first.nextElementSibling;
+        const step = second ? second.offsetLeft - first.offsetLeft : first.getBoundingClientRect().width;
+        grid.scrollBy({ left: direction * step, behavior: prefersReducedMotion.matches ? 'auto' : 'smooth' });
+      };
+      previous.addEventListener('click', () => advance(-1));
+      next.addEventListener('click', () => advance(1));
+      grid.addEventListener('scroll', () => requestAnimationFrame(updateCarousel), { passive:true });
+      window.addEventListener('resize', () => requestAnimationFrame(updateCarousel));
 
       const showStatus = (heading, message) => {
         status.hidden = false;
@@ -945,7 +979,9 @@
           fragment.append(tile);
         }
         grid.append(fragment);
+        grid.scrollLeft = 0;
         count.textContent = items.length + (items.length === 1 ? ' session' : ' sessions');
+        requestAnimationFrame(updateCarousel);
       };
       fetch('videos/gallery.json', { cache:'no-store' })
         .then(response => {
