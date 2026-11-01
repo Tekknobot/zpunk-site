@@ -21,3 +21,25 @@
 @media(max-width:900px){.blog-home-hero.editorial{grid-template-columns:1fr}.featured-story{grid-template-columns:1fr}.featured-story-visual{min-height:320px}}
 @media(max-width:730px){.article-row{grid-template-columns:115px 1fr;gap:16px}.featured-story-visual{min-height:280px}.hero-meta{padding-top:0;border-top:0}}
 @media(max-width:480px){.article-row{grid-template-columns:1fr}.article-row-visual{height:190px}.article-row-body h3{font-size:1.28rem}.featured-story-body h3{font-size:2rem}.article-art--screenshot{min-height:300px}}
+
+/* Keep every blog-index thumbnail at an identical size within each viewport. */
+.article-row { align-items: start; }
+.article-row-visual {
+  height: 150px;
+  min-height: 0;
+  width: 100%;
+  flex: none;
+}
+.article-row-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+@media (max-width: 730px) {
+  .article-row-visual { height: 120px; }
+}
+@media (max-width: 480px) {
+  .article-row-visual { height: 190px; }
+}
