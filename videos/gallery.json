@@ -1,4 +1,17 @@
 {
   "version": 1,
-  "items": []
+  "items": [
+    {
+      "file": "Techno House Groove.mp4",
+      "title": "Techno House Groove",
+      "url": "videos/Techno%20House%20Groove.mp4",
+      "poster": null
+    },
+    {
+      "file": "Dance Music.mp4",
+      "title": "Dance Music",
+      "url": "videos/Dance%20Music.mp4",
+      "poster": null
+    }
+  ]
 }

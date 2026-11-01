@@ -494,6 +494,14 @@
       .store-cta-copy small { font-size: .51rem; }
     }
     @media (prefers-reduced-motion: reduce) { .store-cta { transition: none; } }
+
+    /* Blog lives alongside the manual's existing Sections control. */
+    .header-controls { gap: 13px; }
+    .blog-nav-link { display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; min-height:44px; padding:0 18px; color:var(--text); font-size:.85rem; font-weight:750; letter-spacing:.015em; text-decoration:none; border:1px solid rgba(67,212,181,.45); border-radius:9px; background:rgba(67,212,181,.055); transition:background .18s,border-color .18s,color .18s; }
+    .blog-nav-link:hover, .blog-nav-link:focus-visible { color:var(--mint); border-color:var(--mint); background:rgba(67,212,181,.12); }
+    @media (max-width:500px) { .topbar-inner{gap:8px} .header-controls{gap:8px} .blog-nav-link{padding:0 11px;min-height:41px;font-size:.8rem} }
+    @media (max-width:380px) { .blog-nav-link{padding:0 9px} .brand small { font-size:.56rem; letter-spacing:.05em } .sections-trigger-label{font-size:.79rem} }
+    @media (max-width:355px) { .brand small { display:none; } }
   </style>
 </head>
 <body>
@@ -503,6 +511,7 @@
       <a class="brand" href="#top" aria-label="ZPUNK manual home">ZPUNK <small>2.0 / MANUAL</small></a>
       <div class="header-controls">
         <div class="section-status" aria-hidden="true"><span>NOW READING</span><strong id="current-section">Introduction</strong></div>
+        <a class="blog-nav-link" href="blog/" aria-label="Read the ZPUNK blog">Blog</a>
         <button class="sections-trigger" id="sections-trigger" type="button" aria-expanded="false" aria-controls="sections-panel" aria-haspopup="dialog">
           <span class="sections-trigger-label">Sections</span>
           <span class="menu-glyph" aria-hidden="true"><i></i><i></i><i></i></span>
