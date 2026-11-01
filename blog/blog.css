@@ -43,3 +43,36 @@
 @media (max-width: 480px) {
   .article-row-visual { height: 190px; }
 }
+
+
+/* Techno bassline article: faithful original screenshots and legible step-grid */
+.article-row-visual.techno-thumb{background:radial-gradient(ellipse at 52% 35%,#293e4a,#111927 68%)}
+.article-row-visual.techno-thumb img{width:100%;height:100%;object-fit:contain;object-position:center}
+.techno-bass-hero{display:flex;justify-content:center;align-items:center;min-height:480px;height:480px;background:radial-gradient(ellipse at 52% 30%,#304453,#121c29 68%,#111925);border-color:#354c5c}
+.techno-bass-hero::after{content:none}
+.techno-bass-hero img{position:static;display:block;width:auto;height:420px;max-width:calc(100% - 36px);object-fit:contain;object-position:center;border-radius:15px;box-shadow:0 20px 44px rgba(0,0,0,.3)}
+.techno-sequencer{border:1px solid #344a5c;border-radius:16px;background:linear-gradient(135deg,#152333,#101721);margin:30px 0 32px;padding:20px 16px 16px}
+.techno-sequencer-scroll{width:100%;overflow-x:auto;overflow-y:hidden;padding-bottom:7px;scrollbar-color:#436071 #131c29}
+.techno-sequencer-grid{min-width:620px;display:grid;grid-template-columns:50px repeat(16,minmax(26px,1fr));gap:4px;align-items:stretch}
+.seq-label{color:#94a9ba;display:flex;align-items:center;font-size:.65rem;font-weight:800;letter-spacing:.09em}
+.seq-label.seq-top{color:var(--mint)}
+.seq-step{text-align:center;color:#8296ab;font-size:.67rem;line-height:24px;min-height:24px;font-variant-numeric:tabular-nums}
+.seq-cell{display:flex;align-items:center;justify-content:center;height:38px;border-radius:6px;font-size:.75rem;line-height:1;font-weight:850;color:#d9e4ef;background:#1f2b3b;border:1px solid #354456}
+.seq-cell.beat-start{box-shadow:inset 2px 0 0 #627b87}
+.seq-cell.seq-kick{background:#bf8149;color:#07111b;border-color:#dc9a5c}
+.seq-cell.seq-root{background:#43d4b5;color:#071721;border-color:#62e7c9}
+.seq-cell.seq-tension{background:#9b78d9;color:#101321;border-color:#bea5ef}
+.seq-cell.seq-empty{color:#586a7d}
+.seq-legend{display:flex;flex-wrap:wrap;gap:9px 18px;padding:14px 2px 0}
+.seq-legend span{display:inline-flex;align-items:center;gap:7px;color:#adc0d0;font-size:.78rem}
+.seq-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;background:#253449;border:1px solid #476074}
+.seq-legend .legend-kick{background:#bf8149;border-color:#dc9a5c}
+.seq-legend .legend-root{background:#43d4b5;border-color:#62e7c9}
+.seq-legend .legend-tension{background:#9b78d9;border-color:#bea5ef}
+.techno-sequencer .seq-footnote{font-size:.78rem;line-height:1.6;margin:14px 2px 0;color:#8298aa}
+.techno-sound-figure{text-align:center;padding:23px 20px 15px}
+.techno-sound-figure img{display:block;margin:0 auto;width:100%;max-width:290px;height:auto;max-height:none;object-fit:contain;aspect-ratio:auto;border-radius:12px}
+.techno-sound-figure figcaption{max-width:540px;margin-inline:auto;text-align:left}
+.techno-zpunk-panel img{width:145px;max-width:100%;height:auto;max-height:none;object-fit:contain;object-position:center}
+@media(max-width:730px){.techno-bass-hero{height:400px;min-height:400px}.techno-bass-hero img{height:352px}.techno-sequencer{padding:15px 10px 12px}}
+@media(max-width:480px){.techno-bass-hero{height:345px;min-height:345px}.techno-bass-hero img{height:310px}.techno-zpunk-panel img{width:145px}.techno-sequencer .seq-footnote{font-size:.72rem}}
