@@ -446,6 +446,54 @@
     @media (max-width:760px) { .channel { padding:67px 0 65px; } .channel-gallery { gap:12px; } .channel-tile { flex-basis:clamp(175px,57vw,250px); padding:11px 9px 14px; } .channel-heading { align-items:start; } .channel-phone { width:min(100%,160px); } }
     @media (max-width:430px) { .channel-heading { display:block; margin-bottom:22px; } .channel-toolbar { justify-content:space-between; margin-top:16px; } .channel-title { font-size:.82rem; } .channel-meta { font-size:.61rem; } .channel-phone { border-radius:23px; padding:5px; } .channel-screen { border-radius:17px; } }
     @media (prefers-reduced-motion:reduce) { .channel-phone,.channel-thumbnail,.channel-arrow { transition:none; } .channel-gallery { scroll-behavior:auto; } }
+
+    /* Store links: an unobtrusive purchase path at the very top of the manual. */
+    .store-strip {
+      border-bottom: 1px solid rgba(67,212,181,.18);
+      background: linear-gradient(100deg, #12232d 0%, #111e2a 52%, #101923 100%);
+    }
+    .store-strip-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding-block: 14px;
+    }
+    .store-copy { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+    .store-eyebrow { color: var(--mint); font-size: .65rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .store-message { color: #e2ebf4; font-size: .94rem; font-weight: 620; letter-spacing: -.015em; }
+    .store-ctas { display: flex; flex: 0 0 auto; align-items: center; gap: 10px; }
+    .store-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 48px;
+      min-width: 160px;
+      padding: 8px 14px;
+      border: 1px solid #3d5261;
+      border-radius: 10px;
+      background: rgba(7,15,23,.64);
+      color: var(--text);
+      text-decoration: none;
+      box-shadow: 0 1px 0 rgba(255,255,255,.03) inset;
+      transition: border-color .18s, background .18s, transform .18s;
+    }
+    .store-cta:hover { border-color: var(--mint); background: #1a3039; transform: translateY(-1px); }
+    .store-cta svg { width: 24px; height: 24px; flex-shrink: 0; }
+    .store-cta-copy { display: flex; flex-direction: column; line-height: 1.17; }
+    .store-cta-copy small { color: #9cacbd; font-size: .55rem; font-weight: 700; text-transform: uppercase; letter-spacing: .10em; }
+    .store-cta-copy strong { font-size: .96rem; font-weight: 750; letter-spacing: -.025em; }
+    @media (max-width: 680px) {
+      .store-strip-inner { flex-direction: column; align-items: stretch; gap: 12px; padding-block: 15px 17px; }
+      .store-copy { gap: 2px; }
+      .store-message { font-size: .88rem; }
+      .store-ctas { width: 100%; gap: 9px; }
+      .store-cta { flex: 1 1 0; min-width: 0; justify-content: center; padding-inline: 8px; }
+      .store-cta svg { width: 22px; height: 22px; }
+      .store-cta-copy strong { font-size: .91rem; }
+      .store-cta-copy small { font-size: .51rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { .store-cta { transition: none; } }
   </style>
 </head>
 <body>
@@ -462,6 +510,24 @@
       </div>
     </div>
   </header>
+  <div class="store-strip" aria-label="Get ZPUNK on your phone">
+    <div class="wrap store-strip-inner">
+      <div class="store-copy">
+        <span class="store-eyebrow">ZPUNK / AVAILABLE NOW</span>
+        <span class="store-message">Take your musical ideas anywhere.</span>
+      </div>
+      <div class="store-ctas">
+        <a class="store-cta" href="https://apps.apple.com/us/app/zpunk-beat-maker-sampler/id6760593484" target="_blank" rel="noopener noreferrer" aria-label="Get ZPUNK on the Apple App Store">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.05 12.54c-.02-2.27 1.86-3.38 1.94-3.44-1.03-1.51-2.63-1.72-3.2-1.74-1.36-.14-2.68.8-3.38.8-.69 0-1.75-.78-2.9-.76-1.49.02-2.86.87-3.62 2.21-1.54 2.67-.39 6.6 1.11 8.76.74 1.05 1.61 2.22 2.75 2.17 1.1-.05 1.51-.71 2.82-.71 1.32 0 1.69.71 2.91.69 1.19-.02 1.95-1.08 2.69-2.15a8.57 8.57 0 0 0 1.22-2.52 3.87 3.87 0 0 1-2.34-3.31ZM14.9 6.13a4.65 4.65 0 0 0 1.06-3.38 4.76 4.76 0 0 0-3.09 1.6 4.43 4.43 0 0 0-1.1 3.28 3.92 3.92 0 0 0 3.13-1.5Z"/></svg>
+          <span class="store-cta-copy"><small>Download on the</small><strong>App Store</strong></span>
+        </a>
+        <a class="store-cta" href="https://play.google.com/store/apps/details?id=com.Zillatronics.zpunk" target="_blank" rel="noopener noreferrer" aria-label="Get ZPUNK on Google Play">
+          <svg aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#50D68C" d="M3.2 2.3v19.4l10.2-9.7z"/><path fill="#6EA8FF" d="m3.2 2.3 13.1 7.4-2.9 2.3z"/><path fill="#FFD061" d="m13.4 12 2.9 2.3-13.1 7.4z"/><path fill="#EF7893" d="m16.3 9.7 3.9 2.3-3.9 2.3-2.9-2.3z"/></svg>
+          <span class="store-cta-copy"><small>Get it on</small><strong>Google Play</strong></span>
+        </a>
+      </div>
+    </div>
+  </div>
   <div class="sections-backdrop" id="sections-backdrop" hidden></div>
   <aside class="sections-panel" id="sections-panel" role="dialog" aria-modal="true" aria-labelledby="sections-heading" hidden>
     <div class="sections-panel-top">
