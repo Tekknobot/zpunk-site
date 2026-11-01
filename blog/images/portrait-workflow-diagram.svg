@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="620" viewBox="0 0 1100 620" fill="none">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1100" y2="620"><stop stop-color="#121B2A"/><stop offset="1" stop-color="#141A25"/></linearGradient>
+<linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2CE7C9"/><stop offset="1" stop-color="#7F66FF"/></linearGradient>
+</defs>
+<rect width="1100" height="620" rx="26" fill="url(#bg)"/>
+<text x="60" y="75" fill="#F2F6FB" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700">Portrait-first workflow</text>
+<text x="60" y="112" fill="#9FB2C4" font-family="Arial, Helvetica, sans-serif" font-size="20">Small-screen constraints can create a faster, clearer music-making process.</text>
+<g>
+<rect x="60" y="168" width="220" height="170" rx="18" fill="#162234" stroke="#365062"/>
+<text x="88" y="216" fill="#2EE8CA" font-family="Arial" font-size="18" font-weight="700" letter-spacing="1.5">1 / FOCUS</text>
+<text x="88" y="258" fill="#F2F6FB" font-family="Arial" font-size="34" font-weight="700">One task</text>
+<text x="88" y="296" fill="#F2F6FB" font-family="Arial" font-size="34" font-weight="700">at a time</text>
+<text x="88" y="327" fill="#9FB2C4" font-family="Arial" font-size="18">Less clutter. Faster musical</text>
+<text x="88" y="351" fill="#9FB2C4" font-family="Arial" font-size="18">decisions while standing,</text>
+<text x="88" y="375" fill="#9FB2C4" font-family="Arial" font-size="18">walking or commuting.</text>
+</g>
+<g>
+<rect x="310" y="168" width="220" height="170" rx="18" fill="#162234" stroke="#365062"/>
+<text x="338" y="216" fill="#2EE8CA" font-family="Arial" font-size="18" font-weight="700" letter-spacing="1.5">2 / REACH</text>
+<text x="338" y="258" fill="#F2F6FB" font-family="Arial" font-size="34" font-weight="700">Thumb-friendly</text>
+<text x="338" y="296" fill="#F2F6FB" font-family="Arial" font-size="34" font-weight="700">controls</text>
+<text x="338" y="327" fill="#9FB2C4" font-family="Arial" font-size="18">Large buttons, clear tabs and</text>
+<text x="338" y="351" fill="#9FB2C4" font-family="Arial" font-size="18">compact pages support quick</text>
+<text x="338" y="375" fill="#9FB2C4" font-family="Arial" font-size="18">edits on a real phone screen.</text>
+</g>
+<g>
+<rect x="560" y="168" width="220" height="170" rx="18" fill="#162234" stroke="#365062"/>
+<text x="588" y="216" fill="#2EE8CA" font-family="Arial" font-size="18" font-weight="700" letter-spacing="1.5">3 / SPEED</text>
+<text x="588" y="258" fill="#F2F6FB" font-family="Arial" font-size="34" font-weight="700">Sketch first,</text>
+<text x="588" y="296" fill="#F2F6FB" font-family="Arial" font-size="34" font-weight="700">refine later</text>
+<text x="588" y="327" fill="#9FB2C4" font-family="Arial" font-size="18">The goal is ideas on demand,</text>
+<text x="588" y="351" fill="#9FB2C4" font-family="Arial" font-size="18">not a heavyweight DAW with</text>
+<text x="588" y="375" fill="#9FB2C4" font-family="Arial" font-size="18">every possible option visible.</text>
+</g>
+<g>
+<rect x="810" y="168" width="230" height="170" rx="18" fill="#162234" stroke="#365062"/>
+<text x="838" y="216" fill="#2EE8CA" font-family="Arial" font-size="18" font-weight="700" letter-spacing="1.5">4 / FITNESS</text>
+<text x="838" y="258" fill="#F2F6FB" font-family="Arial" font-size="34" font-weight="700">Stay musically</text>
+<text x="838" y="296" fill="#F2F6FB" font-family="Arial" font-size="34" font-weight="700">active</text>
+<text x="838" y="327" fill="#9FB2C4" font-family="Arial" font-size="18">Capture patterns, chords and</text>
+<text x="838" y="351" fill="#9FB2C4" font-family="Arial" font-size="18">loops away from the studio,</text>
+<text x="838" y="375" fill="#9FB2C4" font-family="Arial" font-size="18">so the habit never goes cold.</text>
+</g>
+<g>
+<rect x="112" y="420" width="876" height="126" rx="18" fill="#101824" stroke="#355163"/>
+<circle cx="178" cy="483" r="26" fill="#1C3048" stroke="#41748A"/>
+<text x="165" y="491" fill="#2EE8CA" font-family="Arial" font-size="26" font-weight="700">P</text>
+<text x="226" y="468" fill="#F2F6FB" font-family="Arial" font-size="28" font-weight="700">Portrait mode becomes part of the instrument.</text>
+<text x="226" y="503" fill="#9FB2C4" font-family="Arial" font-size="20">The restrictions are real: less room, stricter hierarchy, harder layout decisions. But those limits also encourage a workflow that is direct, deliberate and mobile by nature.</text>
+</g>
+</svg>

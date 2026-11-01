@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="700" viewBox="0 0 1240 700" fill="none">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1240" y2="700" gradientUnits="userSpaceOnUse">
+<stop stop-color="#101a29"/>
+<stop offset="1" stop-color="#201c39"/>
+</linearGradient>
+<linearGradient id="glow" x1="170" y1="90" x2="1090" y2="610" gradientUnits="userSpaceOnUse">
+<stop stop-color="#30E8C9" stop-opacity="0.15"/>
+<stop offset="0.55" stop-color="#8A58FF" stop-opacity="0.18"/>
+<stop offset="1" stop-color="#FF4DB6" stop-opacity="0.14"/>
+</linearGradient>
+<linearGradient id="screen" x1="0" y1="0" x2="1" y2="1">
+<stop stop-color="#151E2B"/><stop offset="1" stop-color="#111927"/>
+</linearGradient>
+</defs>
+<rect width="1240" height="700" fill="url(#bg)"/>
+<circle cx="990" cy="160" r="250" fill="#7A5CFF" fill-opacity="0.14"/>
+<circle cx="210" cy="540" r="190" fill="#2EE8CA" fill-opacity="0.12"/>
+<rect x="0" y="0" width="1240" height="700" fill="url(#glow)"/>
+<g opacity="0.28" stroke="#43637A">
+<path d="M30 564H1210"/>
+<path d="M30 484H1210"/>
+<path d="M30 404H1210"/>
+<path d="M30 324H1210"/>
+</g>
+<g>
+<rect x="726" y="73" width="300" height="554" rx="38" fill="#0B111B" stroke="#5E7186" stroke-width="4"/>
+<rect x="748" y="132" width="256" height="444" rx="24" fill="url(#screen)"/>
+<rect x="833" y="92" width="86" height="18" rx="9" fill="#05080C"/>
+<g stroke="#2BE2C5" stroke-width="2.5" opacity="0.85">
+<rect x="778" y="168" width="46" height="28" rx="8"/>
+<rect x="836" y="168" width="46" height="28" rx="8"/>
+<rect x="894" y="168" width="46" height="28" rx="8"/>
+<rect x="952" y="168" width="46" height="28" rx="8"/>
+</g>
+<g fill="#B9C9D8" opacity="0.6">
+<circle cx="800" cy="231" r="3"/><circle cx="858" cy="231" r="3"/><circle cx="916" cy="231" r="3"/><circle cx="974" cy="231" r="3"/>
+</g>
+<g stroke="#314557">
+<path d="M776 257H976"/><path d="M776 305H976"/><path d="M776 353H976"/><path d="M776 401H976"/><path d="M776 449H976"/>
+</g>
+<g fill="#8CF3E0"><circle cx="808" cy="281" r="8"/><circle cx="866" cy="329" r="8"/><circle cx="924" cy="281" r="8"/><circle cx="982" cy="377" r="8"/></g>
+<g stroke="#F051D8" stroke-width="6" stroke-linecap="round">
+<path d="M808 281L866 329L924 281L982 377"/>
+</g>
+<g fill="#C9D4E0" opacity="0.75">
+<rect x="779" y="497" width="92" height="44" rx="12"/><rect x="880" y="497" width="116" height="44" rx="12"/>
+</g>
+<rect x="820" y="594" width="112" height="6" rx="3" fill="#DFE6F0" fill-opacity="0.25"/>
+</g>
+<g>
+<text x="84" y="127" fill="#2EE8CA" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" letter-spacing="3.5">WORKFLOW / UI DESIGN</text>
+<text x="84" y="232" fill="#F3F6FB" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700">Why ZPUNK Is</text>
+<text x="84" y="314" fill="#F3F6FB" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700">Built in Portrait</text>
+<text x="84" y="396" fill="#F3F6FB" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700">for Music on the Go</text>
+<text x="84" y="466" fill="#B0C0D0" font-family="Arial, Helvetica, sans-serif" font-size="30">How limited space, fast decisions and mobile-first design shaped a</text>
+<text x="84" y="506" fill="#B0C0D0" font-family="Arial, Helvetica, sans-serif" font-size="30">pocket groovebox built to keep you musically fit away from the studio.</text>
+</g>
+</svg>
