@@ -35,6 +35,7 @@ const manifest = {
 await rm(out, { recursive:true, force:true });
 await mkdir(out, { recursive:true });
 await cp(join(root,'index.html'),join(out,'index.html'));
+await cp(join(root,'site-counters.js'),join(out,'site-counters.js'));
 await cp(join(root,'images'),join(out,'images'), { recursive:true });
 await cp(join(root,'blog'),join(out,'blog'), { recursive:true });
 await cp(join(root,'sitemap.xml'),join(out,'sitemap.xml'));
