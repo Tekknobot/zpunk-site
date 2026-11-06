@@ -363,6 +363,9 @@
     .session-steps { list-style:none; counter-reset: session-step; margin:0; padding:0; }
     .session-steps li { counter-increment:session-step; display:grid; grid-template-columns:35px minmax(0,1fr); gap:14px; padding:16px 0; border-bottom:1px solid var(--line); color:var(--muted); font-size:.94rem; line-height:1.68; }
     .session-steps li::before { content: counter(session-step,decimal-leading-zero); color:var(--mint); font-size:.79rem; font-weight:750; padding-top:2px; letter-spacing:.07em; }
+    .session-steps .session-step-copy { min-width:0; }
+    .session-steps .session-step-copy strong { display:block; margin:0 0 5px; line-height:1.4; }
+    .session-steps .session-step-copy p { margin:0; overflow-wrap:break-word; }
     .session-steps strong, .session-section strong { color:var(--text); }
     .session-tip { margin-top:25px; }
     .session-lower { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(26px,5vw,75px); margin:54px 0 30px; }
@@ -774,7 +777,7 @@
 <figure class="session-device"><a class="shot" href="images/session.jpg" target="_blank" rel="noopener" aria-label="Open the ZPUNK Session View screenshot at full size"><img src="images/session.jpg" width="945" height="2048" loading="lazy" alt="ZPUNK Session View with scene rows, colored DRUMS BASS SYNTH PADS clip slots, QUANT button, playback position row, Mute and Solo, STOP and Filters / FX drawer"/></a><figcaption class="caption">Session View · tap the image for a closer look. Swipe horizontally across the clip grid to reach the remaining tracks.</figcaption></figure>
 <div class="session-guide">
 <h3>From arrangement to performance</h3>
-<ol class="session-steps"><li><strong>Prepare your clips in ARRANGE.</strong> Each unique clip start position becomes a scene row in Session. The colored cells show the clips available on each track.</li><li><strong>Stop arrangement playback.</strong> Open Session with the grid icon in the top bar, then tap a clip or scene to begin a live performance.</li><li><strong>Launch a clip.</strong> Tap a filled cell in a track column. A running Session queues the change for the next safe quantized boundary. A full-color cell shows the currently playing clip; a brighter tint indicates a queued clip.</li><li><strong>Launch a scene.</strong> Scroll the grid sideways to the GO column and tap the scene's play button to queue its filled clips together. Empty slots do not stop tracks already playing.</li></ol>
+<ol class="session-steps"><li><div class="session-step-copy"><strong>Prepare your clips in ARRANGE.</strong><p>Each unique clip start position becomes a scene row in Session. The colored cells show the clips available on each track.</p></div></li><li><div class="session-step-copy"><strong>Stop arrangement playback.</strong><p>Open Session with the grid icon in the top bar, then tap a clip or scene to begin a live performance.</p></div></li><li><div class="session-step-copy"><strong>Launch a clip.</strong><p>Tap a filled cell in a track column. A running Session queues the change for the next safe quantized boundary. A full-color cell shows the currently playing clip; a brighter tint indicates a queued clip.</p></div></li><li><div class="session-step-copy"><strong>Launch a scene.</strong><p>Scroll the grid sideways to the GO column and tap the scene's play button to queue its filled clips together. Empty slots do not stop tracks already playing.</p></div></li></ol>
 <div class="note session-tip"><strong>Tip:</strong> You do not need to tap at the exact beat. Tap <em>before</em> the boundary you want. A trigger received too close to that boundary may be placed at the next one to protect playback timing.</div>
 </div>
 </div>
